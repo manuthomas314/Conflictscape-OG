@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+  <defs>
+    <linearGradient id="wl-grad-1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#065f46" />
+    </linearGradient>
+    <linearGradient id="wl-grad-2" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2dd4bf" />
+      <stop offset="100%" stop-color="#0f766e" />
+    </linearGradient>
+    <linearGradient id="wl-grad-accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34d399" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Dark outer rounded container -->
+  <rect width="100" height="100" rx="24" fill="#081411" />
+  <rect x="2" y="2" width="96" height="96" rx="22" fill="none" stroke="rgba(52, 211, 153, 0.25)" stroke-width="2" />
+
+  <!-- Aperture & Leaf Composite Geometry -->
+  <g transform="translate(50, 50)" filter="url(#glow)">
+    <!-- Outer ring segments (Camera Aperture) -->
+    <path d="M-36,0 A36,36 0 0,1 -18,-31.18 L-9,-15.59 A18,18 0 0,0 -18,0 Z" fill="url(#wl-grad-1)" opacity="0.85" />
+    <path d="M-18,-31.18 A36,36 0 0,1 18,-31.18 L9,-15.59 A18,18 0 0,0 -9,-15.59 Z" fill="url(#wl-grad-2)" opacity="0.9" />
+    <path d="M18,-31.18 A36,36 0 0,1 36,0 L18,0 A18,18 0 0,0 9,-15.59 Z" fill="url(#wl-grad-1)" opacity="0.85" />
+    <path d="M36,0 A36,36 0 0,1 18,31.18 L9,15.59 A18,18 0 0,0 18,0 Z" fill="url(#wl-grad-2)" opacity="0.9" />
+    <path d="M18,31.18 A36,36 0 0,1 -18,31.18 L-9,15.59 A18,18 0 0,0 9,15.59 Z" fill="url(#wl-grad-1)" opacity="0.85" />
+    <path d="M-18,31.18 A36,36 0 0,1 -36,0 L-18,0 A18,18 0 0,0 -9,15.59 Z" fill="url(#wl-grad-2)" opacity="0.9" />
+
+    <!-- Central Organic Leaf Emblem -->
+    <path d="M0,-14 C12,-10 14,8 0,18 C-14,8 -12,-10 0,-14 Z" fill="url(#wl-grad-accent)" />
+    <!-- Leaf Center Rib -->
+    <path d="M0,-10 Q1,4 0,15" stroke="#064e3b" stroke-width="2" stroke-linecap="round" fill="none" />
+    <circle cx="0" cy="1" r="2.5" fill="#a7f3d0" />
+  </g>
+</svg>

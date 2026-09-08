@@ -1,0 +1,66 @@
+{
+  "name": "Deciphering Conflicts — India Mining Conflicts & Protests",
+  "short_name": "Deciphering Conflicts",
+  "description": "Track community, farmer and Adivasi opposition to mining across India on an interactive map — blockades, dharnas, Gram Sabha rejections and displacement disputes from 2018 to the present.",
+  "start_url": "app/?source=pwa",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#060e0c",
+  "background_color": "#060e0c",
+  "lang": "en-IN",
+  "categories": [
+    "news",
+    "education"
+  ],
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "screenshots/app-map.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Mining protests plotted on India map"
+    },
+    {
+      "src": "screenshots/app-filters.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Filter by category, source and date"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Regional Edition",
+      "short_name": "Regional",
+      "description": "Regional-language news edition",
+      "url": "regional/?source=pwa_shortcut",
+      "icons": [
+        {
+          "src": "icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ]
+}

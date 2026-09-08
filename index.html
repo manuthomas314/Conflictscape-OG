@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deciphering Conflicts — India Mining Conflicts &amp; Protests Map</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Deciphering Conflicts maps community opposition to mining across India — Adivasi resistance, Gram Sabha rejections, road and rail blockades, dharnas and land-acquisition disputes — as live pins on an interactive map, from 2018 to the present." />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Deciphering Conflicts" />
+  <meta property="og:title" content="Deciphering Conflicts — India Mining Conflicts &amp; Protests Map" />
+  <meta property="og:description" content="Every documented mining protest in India, mapped. Adivasi resistance, Gram Sabha rejections, blockades and displacement disputes, 2018 to the present." />
+  <meta property="og:image" content="og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Deciphering Conflicts — India Mining Conflicts &amp; Protests Map" />
+  <meta name="twitter:description" content="Every documented mining protest in India, mapped. 2018 to the present, updated every 6 hours." />
+  <meta name="twitter:image" content="og-image.png" />
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Deciphering Conflicts",
+    "alternateName": "Deciphering Conflicts — India Mining Conflicts & Protests Map",
+    "description": "Interactive map of mining conflicts and community protests across India, aggregated from ten national news outlets and updated every 6 hours.",
+    "inLanguage": "en-IN",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Deciphering Conflicts",
+      "email": "nikunj@wilderlens.org"
+    }
+  }
+  </script>
+
+  <!-- Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+
+  <!-- Driver.js tour -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/driver.js@1.3.1/dist/driver.css" />
+
+  <link rel="stylesheet" href="style.css?v=20" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
+</head>
+<body>
+  <!-- Crawlable heading + intro for search engines (visually hidden; map fills the screen) -->
+  <div style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">
+    <h1>Deciphering Conflicts — India Mining Conflicts &amp; Protests Map</h1>
+    <p>Deciphering Conflicts maps documented community opposition to mining across India — Adivasi and farmer resistance, Gram Sabha rejections, public-hearing boycotts, road and rail blockades, dharnas, hunger strikes, displacement and land-acquisition disputes — as live pins on an interactive map of India's coal, bauxite, iron ore, sandstone, diamond, chromite, uranium and sand mining belts. Aggregated from NDTV, India.com, BBC News, Times of India, India Today, Republic, Hindustan Times, Mongabay India, The Hindu and Down To Earth, from 2018 to the present, and updated every six hours.</p>
+  </div>
+
+  <!-- ── Left Panel ─────────────────────────────────────────────────────── -->
+  <aside id="panel" aria-label="Filters and search">
+
+    <!-- Header -->
+    <div id="panel-header">
+      <div id="panel-brand">
+        <div id="panel-logo" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 100 100" fill="none">
+            <g transform="translate(50,50) scale(0.88)">
+              <path d="M-36,0 A36,36 0 0,1 -18,-31.18 L-9,-15.59 A18,18 0 0,0 -18,0 Z" fill="#10b981" opacity="0.85" />
+              <path d="M-18,-31.18 A36,36 0 0,1 18,-31.18 L9,-15.59 A18,18 0 0,0 -9,-15.59 Z" fill="#2dd4bf" opacity="0.9" />
+              <path d="M18,-31.18 A36,36 0 0,1 36,0 L18,0 A18,18 0 0,0 9,-15.59 Z" fill="#10b981" opacity="0.85" />
+              <path d="M36,0 A36,36 0 0,1 18,31.18 L9,15.59 A18,18 0 0,0 18,0 Z" fill="#2dd4bf" opacity="0.9" />
+              <path d="M18,31.18 A36,36 0 0,1 -18,31.18 L-9,15.59 A18,18 0 0,0 9,15.59 Z" fill="#10b981" opacity="0.85" />
+              <path d="M-18,31.18 A36,36 0 0,1 -36,0 L-18,0 A18,18 0 0,0 -9,15.59 Z" fill="#2dd4bf" opacity="0.9" />
+              <path d="M0,-13 C10,-9 12,7 0,16 C-12,7 -10,-9 0,-13 Z" fill="#34d399" />
+              <circle cx="0" cy="1" r="2.5" fill="#a7f3d0" />
+            </g>
+          </svg>
+        </div>
+        <div id="panel-title-group">
+          <span id="panel-title">Deciphering Conflicts</span>
+          <span id="panel-subtitle">Mining Protests (2018–Present)</span>
+          <a id="regional-link" href="regional/" aria-label="Switch to Regional Edition">
+            Regional Edition
+            <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+        </div>
+      </div>
+      <button id="panel-toggle" aria-label="Collapse panel">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Body -->
+    <div id="panel-body">
+
+      <!-- Search -->
+      <div class="filter-section" style="padding-top:4px">
+        <div class="search-wrapper">
+          <svg class="search-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+          <input id="search" type="text" placeholder="Search protests, mines, Adivasi marches, states…" autocomplete="off" aria-label="Search articles" />
+          <button id="search-clear" class="search-clear" aria-label="Clear search" style="display:none">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+              <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Geographical States -->
+      <div class="filter-section">
+        <button class="section-header open" data-target="state-body" aria-expanded="true">
+          <span class="section-label">Geographical States</span>
+          <svg class="chevron" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </button>
+        <div class="section-body" id="state-body">
+          <div id="state-controls">
+            <button id="select-all-states" class="state-ctrl-btn">All States</button>
+            <button id="clear-states" class="state-ctrl-btn">Clear</button>
+          </div>
+          <div id="state-filters" role="group" aria-label="Geographical state filters">
+            <!-- Dynamically populated with state chips & counters -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Date range -->
+      <div class="filter-section">
+        <button class="section-header open" data-target="date-body" aria-expanded="true">
+          <span class="section-label">Date range</span>
+          <svg class="chevron" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </button>
+        <div class="section-body" id="date-body">
+          <div id="date-row">
+            <div class="date-field">
+              <label class="date-label" for="date-from">From</label>
+              <input type="date" id="date-from" min="2018-01-01" value="2018-01-01" />
+            </div>
+            <span class="date-sep" aria-hidden="true">—</span>
+            <div class="date-field">
+              <label class="date-label" for="date-to">To</label>
+              <input type="date" id="date-to" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Source dropdown -->
+      <div class="filter-section" id="src-section">
+        <div class="src-dropdown-row">
+          <span class="section-label">Source</span>
+          <button id="src-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+            <span id="src-dropdown-label">All sources</span>
+            <svg class="src-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+        </div>
+        <div id="src-dropdown-panel" hidden role="listbox" aria-multiselectable="true" aria-label="Source filter"></div>
+      </div>
+
+    </div><!-- /panel-body -->
+
+    <!-- Footer: stats + reset + meta -->
+    <div id="panel-footer">
+      <div id="stats" aria-live="polite"></div>
+      <div id="week-stats" aria-live="polite"></div>
+      <div id="history-bar"></div>
+      <button id="reset-btn">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.78"/>
+        </svg>
+        Reset filters
+      </button>
+      <div id="footer-meta">
+        <span id="visit-count" aria-label="Total site visits">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          <span id="visit-num">—</span>
+        </span>
+        <button id="tour-btn" aria-label="Take a guided tour">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          Tour
+        </button>
+        <button id="about-btn" aria-label="About Deciphering Conflicts" onclick="document.getElementById('about-modal').removeAttribute('hidden')">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          About
+        </button>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- ── Hotspot card ──────────────────────────────────────────────────── -->
+  <div id="hotspot-card" hidden aria-live="polite">
+    <div id="hotspot-header">
+      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Hotspot · This week
+    </div>
+    <div id="hotspot-place"></div>
+    <div id="hotspot-count"></div>
+  </div>
+
+  <!-- ── Source info popover ──────────────────────────────────────────── -->
+  <div id="src-popover" hidden role="tooltip" aria-live="polite"></div>
+
+  <!-- About modal -->
+  <div id="about-modal" hidden role="dialog" aria-modal="true" aria-label="About Deciphering Conflicts" onclick="if(event.target===this)this.setAttribute('hidden','')">
+    <div id="about-modal-box">
+      <div id="about-modal-head">
+        <span id="about-modal-title">About Deciphering Conflicts</span>
+        <button id="about-modal-close" aria-label="Close" onclick="document.getElementById('about-modal').setAttribute('hidden','')">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <p>Deciphering Conflicts is an automated system that reads ten Indian and international news outlets — NDTV, India.com, BBC News, Times of India, India Today, Republic, Hindustan Times, Mongabay India, The Hindu and Down To Earth — every 6 hours and maps reports of community protest against mining. No automated pipeline is perfect — articles may occasionally be missed or unrelated ones may slip through.</p>
+      <p>Spotted a missed article or a false positive? Want to get in touch for anything else? Write to us at <a href="mailto:nikunj@wilderlens.org">nikunj@wilderlens.org</a></p>
+    </div>
+  </div>
+
+  <!-- ── Map ────────────────────────────────────────────────────────────── -->
+  <main id="map" aria-label="Deciphering Conflicts — India Mining Conflicts &amp; Protests Map"></main>
+
+  <!-- ── Chat widget ────────────────────────────────────────────────────── -->
+  <button id="chat-fab" aria-label="Ask Deciphering Conflicts" title="Ask Deciphering Conflicts">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+    </svg>
+  </button>
+  <div id="chat-widget" role="dialog" aria-label="Ask Deciphering Conflicts assistant" aria-modal="false">
+    <div id="chat-head">
+      <div id="chat-title">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        </svg>
+        Ask Deciphering Conflicts
+      </div>
+      <button id="chat-close" aria-label="Close chat">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <div id="chat-messages" role="log" aria-live="polite" aria-atomic="false"></div>
+    <div id="chat-input-row">
+      <input id="chat-input" type="text" placeholder="Ask about mining protests, states, minerals…" autocomplete="off" aria-label="Your question" maxlength="200" />
+      <button id="chat-send" aria-label="Send">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/driver.js@1.3.1/dist/driver.js.iife.js"></script>
+  <script src="data.js?v=32"></script>
+  <script src="map.js?v=32"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then(registrations => {
+        for (let registration of registrations) {
+          registration.unregister();
+        }
+      });
+    }
+    if ('caches' in window) {
+      caches.keys().then(names => {
+        for (let name of names) caches.delete(name);
+      });
+    }
+  </script>
+</body>
+</html>

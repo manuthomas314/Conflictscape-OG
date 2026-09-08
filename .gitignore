@@ -1,0 +1,24 @@
+# Gazetteer is a build artefact, not source. A full GeoNames build is ~64 MB —
+# past GitHub's 50 MB warning threshold and pure bloat in every clone, since the
+# website never reads it (only the Python pipeline does).
+# Rebuild with: python build_gazetteer.py
+gazetteer.json
+gazetteer_source.json
+IN.zip
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Working folders
+Claude outputs/
