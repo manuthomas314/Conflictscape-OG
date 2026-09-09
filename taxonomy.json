@@ -1,0 +1,132 @@
+{
+  "types": [
+    {
+      "id": "extractive",
+      "order": 1,
+      "name": "Extractive Resource Conflicts",
+      "short": "Extractive",
+      "letter": "E",
+      "colour": "#8C5A2B",
+      "spt": [
+        "materials",
+        "competences"
+      ],
+      "spt_note": "Subsoil or surface resources are removed and the physical landscape communities depend on is transformed. Competence asymmetry over legal resource rights: who can read a lease, a clearance, a compensation formula.",
+      "definition": "Contention over the extraction of minerals, hydrocarbons, sand and stone, including energy and climate conflicts where the driver is extraction.",
+      "absorbs": [
+        "Mining Conflicts",
+        "Energy and Climate Conflicts (extraction-driven)"
+      ]
+    },
+    {
+      "id": "land_agrarian",
+      "order": 2,
+      "name": "Land-Use and Agrarian Conflicts",
+      "short": "Land & Agrarian",
+      "letter": "L",
+      "colour": "#5C7A29",
+      "spt": [
+        "materials",
+        "meanings"
+      ],
+      "spt_note": "Agricultural and forest land is converted or enclosed. Both the material basis of subsistence practice and the identity tied to that land are ruptured — the same practice configuration whether the converting agent is a plantation company or a state land bank.",
+      "definition": "Contention over the acquisition, conversion, enclosure or plantation of agricultural, common and forest land, including biomass and land-use conflicts and the land-acquisition dimension of large projects.",
+      "absorbs": [
+        "Land-Use Conflicts",
+        "Biomass and Land-Use Conflicts"
+      ]
+    },
+    {
+      "id": "infrastructure",
+      "order": 3,
+      "name": "Infrastructure and Mobility Conflicts",
+      "short": "Infrastructure",
+      "letter": "I",
+      "colour": "#3E6E8E",
+      "spt": [
+        "materials"
+      ],
+      "spt_note": "Physical infrastructure displaces, fragments or degrades the material basis of community practice. Distinct from extraction because the end-use is connectivity and development, not resource removal.",
+      "definition": "Contention over the siting and construction of transport, transmission, urban and hydro-infrastructure: roads, railways, ports, airports, expressways, dams, canals, power lines and large urban projects.",
+      "absorbs": [
+        "Infrastructure Conflicts"
+      ]
+    },
+    {
+      "id": "conservation",
+      "order": 4,
+      "name": "Conservation and Biodiversity Conflicts",
+      "short": "Conservation",
+      "letter": "C",
+      "colour": "#2E7D6B",
+      "spt": [
+        "meanings"
+      ],
+      "spt_note": "The dominant rupture is over what the forest or landscape is FOR. Conservation science and state protection impose a meaning that overrides local cultural, spiritual and livelihood meanings. Tourism is a subtype here, not a separate type.",
+      "definition": "Contention arising from protected-area declaration and enforcement, eco-sensitive zoning, human–wildlife conflict, sacred-landscape claims, and conservation- or tourism-driven restriction of access and use.",
+      "absorbs": [
+        "Biodiversity Conflicts",
+        "Tourism-Related Conflicts"
+      ]
+    },
+    {
+      "id": "industrial_pollution",
+      "order": 5,
+      "name": "Industrial Pollution Conflicts",
+      "short": "Industrial Pollution",
+      "letter": "P",
+      "colour": "#B03A2E",
+      "spt": [
+        "materials"
+      ],
+      "spt_note": "The material environment — air, water, soil — is degraded by industrial practice, disrupting the conditions under which community practice is possible at all. Distinct enough in its logic to stand alone.",
+      "definition": "Contention over emissions, effluents and contamination from production facilities: chemical and pharmaceutical plants, smelters, refineries, tanneries, dyeing units, thermal stations and industrial estates.",
+      "absorbs": [
+        "Industrial Pollution Conflicts"
+      ]
+    },
+    {
+      "id": "waste",
+      "order": 6,
+      "name": "Waste and Disposal Conflicts",
+      "short": "Waste & Disposal",
+      "letter": "W",
+      "colour": "#7A5C9E",
+      "spt": [
+        "materials",
+        "meanings"
+      ],
+      "spt_note": "Proximity to waste sites disrupts both physical living conditions and the dignity and identity meanings communities attach to their neighbourhood. Distinct from industrial pollution because the conflict is about where waste goes, not about production emissions.",
+      "definition": "Contention over the siting and operation of disposal infrastructure: landfills, dumping yards, waste-to-energy and incineration plants, sewage and septage works, biomedical and e-waste facilities.",
+      "absorbs": [
+        "Waste Management Conflicts"
+      ]
+    }
+  ],
+  "tags": [
+    {
+      "id": "water",
+      "name": "Water-related",
+      "colour": "#2C7FB8",
+      "note": "River diversion, irrigation rights, dam displacement, groundwater depletion and drinking-water access. Cross-cutting by design: in India these run through extraction, agrarian, infrastructure and pollution practices alike, so water is a tag rather than a seventh type."
+    },
+    {
+      "id": "national_policy",
+      "name": "National policy protest",
+      "colour": "#6B7280",
+      "note": "Not place-based: contention over a national environmental rule or instrument. Retained by the inclusion rule and flagged so it can be separated from site-level cases in analysis."
+    }
+  ],
+  "sources": [
+    "NDTV",
+    "India.com",
+    "BBC News",
+    "Times of India",
+    "India Today",
+    "Republic",
+    "Hindustan Times",
+    "Mongabay India",
+    "The Hindu",
+    "Down To Earth"
+  ]
+}

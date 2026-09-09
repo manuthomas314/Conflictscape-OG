@@ -1,66 +1,16 @@
 {
-  "name": "Deciphering Conflicts — India Mining Conflicts & Protests",
-  "short_name": "Deciphering Conflicts",
-  "description": "Track community, farmer and Adivasi opposition to mining across India on an interactive map — blockades, dharnas, Gram Sabha rejections and displacement disputes from 2018 to the present.",
-  "start_url": "app/?source=pwa",
+  "name": "Conflictscape — environmental conflicts in India",
+  "short_name": "Conflictscape",
+  "description": "Reported environmental conflicts in India, read from ten news outlets and sorted into six types by the element of social practice each one disrupts.",
+  "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
-  "orientation": "portrait",
-  "theme_color": "#060e0c",
-  "background_color": "#060e0c",
+  "background_color": "#F3F4F1",
+  "theme_color": "#F3F4F1",
   "lang": "en-IN",
-  "categories": [
-    "news",
-    "education"
-  ],
   "icons": [
-    {
-      "src": "icons/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "icons/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "icons/icon-maskable.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "maskable"
-    }
-  ],
-  "screenshots": [
-    {
-      "src": "screenshots/app-map.png",
-      "sizes": "1080x1920",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "Mining protests plotted on India map"
-    },
-    {
-      "src": "screenshots/app-filters.png",
-      "sizes": "1080x1920",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "Filter by category, source and date"
-    }
-  ],
-  "shortcuts": [
-    {
-      "name": "Regional Edition",
-      "short_name": "Regional",
-      "description": "Regional-language news edition",
-      "url": "regional/?source=pwa_shortcut",
-      "icons": [
-        {
-          "src": "icons/icon-192.png",
-          "sizes": "192x192"
-        }
-      ]
-    }
+    { "src": "icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" }
   ]
 }

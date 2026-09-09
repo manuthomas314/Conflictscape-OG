@@ -1,4 +1,7 @@
-window.DECIPHER_DATA = [
+window.CONFLICTSCAPE = {
+  "generated": "2026-09-09",
+  "taxonomy": {"types": [{"id": "extractive", "order": 1, "name": "Extractive Resource Conflicts", "short": "Extractive", "letter": "E", "colour": "#8C5A2B", "spt": ["materials", "competences"], "spt_note": "Subsoil or surface resources are removed and the physical landscape communities depend on is transformed. Competence asymmetry over legal resource rights: who can read a lease, a clearance, a compensation formula.", "definition": "Contention over the extraction of minerals, hydrocarbons, sand and stone, including energy and climate conflicts where the driver is extraction.", "absorbs": ["Mining Conflicts", "Energy and Climate Conflicts (extraction-driven)"]}, {"id": "land_agrarian", "order": 2, "name": "Land-Use and Agrarian Conflicts", "short": "Land & Agrarian", "letter": "L", "colour": "#5C7A29", "spt": ["materials", "meanings"], "spt_note": "Agricultural and forest land is converted or enclosed. Both the material basis of subsistence practice and the identity tied to that land are ruptured — the same practice configuration whether the converting agent is a plantation company or a state land bank.", "definition": "Contention over the acquisition, conversion, enclosure or plantation of agricultural, common and forest land, including biomass and land-use conflicts and the land-acquisition dimension of large projects.", "absorbs": ["Land-Use Conflicts", "Biomass and Land-Use Conflicts"]}, {"id": "infrastructure", "order": 3, "name": "Infrastructure and Mobility Conflicts", "short": "Infrastructure", "letter": "I", "colour": "#3E6E8E", "spt": ["materials"], "spt_note": "Physical infrastructure displaces, fragments or degrades the material basis of community practice. Distinct from extraction because the end-use is connectivity and development, not resource removal.", "definition": "Contention over the siting and construction of transport, transmission, urban and hydro-infrastructure: roads, railways, ports, airports, expressways, dams, canals, power lines and large urban projects.", "absorbs": ["Infrastructure Conflicts"]}, {"id": "conservation", "order": 4, "name": "Conservation and Biodiversity Conflicts", "short": "Conservation", "letter": "C", "colour": "#2E7D6B", "spt": ["meanings"], "spt_note": "The dominant rupture is over what the forest or landscape is FOR. Conservation science and state protection impose a meaning that overrides local cultural, spiritual and livelihood meanings. Tourism is a subtype here, not a separate type.", "definition": "Contention arising from protected-area declaration and enforcement, eco-sensitive zoning, human–wildlife conflict, sacred-landscape claims, and conservation- or tourism-driven restriction of access and use.", "absorbs": ["Biodiversity Conflicts", "Tourism-Related Conflicts"]}, {"id": "industrial_pollution", "order": 5, "name": "Industrial Pollution Conflicts", "short": "Industrial Pollution", "letter": "P", "colour": "#B03A2E", "spt": ["materials"], "spt_note": "The material environment — air, water, soil — is degraded by industrial practice, disrupting the conditions under which community practice is possible at all. Distinct enough in its logic to stand alone.", "definition": "Contention over emissions, effluents and contamination from production facilities: chemical and pharmaceutical plants, smelters, refineries, tanneries, dyeing units, thermal stations and industrial estates.", "absorbs": ["Industrial Pollution Conflicts"]}, {"id": "waste", "order": 6, "name": "Waste and Disposal Conflicts", "short": "Waste & Disposal", "letter": "W", "colour": "#7A5C9E", "spt": ["materials", "meanings"], "spt_note": "Proximity to waste sites disrupts both physical living conditions and the dignity and identity meanings communities attach to their neighbourhood. Distinct from industrial pollution because the conflict is about where waste goes, not about production emissions.", "definition": "Contention over the siting and operation of disposal infrastructure: landfills, dumping yards, waste-to-energy and incineration plants, sewage and septage works, biomedical and e-waste facilities.", "absorbs": ["Waste Management Conflicts"]}], "tags": [{"id": "water", "name": "Water-related", "colour": "#2C7FB8", "note": "River diversion, irrigation rights, dam displacement, groundwater depletion and drinking-water access. Cross-cutting by design: in India these run through extraction, agrarian, infrastructure and pollution practices alike, so water is a tag rather than a seventh type."}, {"id": "national_policy", "name": "National policy protest", "colour": "#6B7280", "note": "Not place-based: contention over a national environmental rule or instrument. Retained by the inclusion rule and flagged so it can be separated from site-level cases in analysis."}], "sources": ["NDTV", "India.com", "BBC News", "Times of India", "India Today", "Republic", "Hindustan Times", "Mongabay India", "The Hindu", "Down To Earth"]},
+  "records": [
   {
     "headline": "Residents protest proposed stone quarry in Tirupattur",
     "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNcnl5YmNwaGwzVUlXOWFPTVZWeS1ZWTFFMTVUVk5lVmlUcmViTXBHRFVQRkxxQVozdWZMYTNacWtNeVNMWEFMTTI1WXNtZWt5aUt0MmlMeHRQMTVUYjVfM1FfYWtxMjdHbWNmaWcwcHJtNTJVOHh5OW5OTkl4aEhUV3Vob1IzSWt6aExFNHI0UEhzWVVGT2kwUUV4WUpMZ0hfMGJFUktnbnVqSjdhWDF5cDFKTXlsUGpjODY3THFseULSAccBQVVfeXFMTVdrU3g0ZE81dHhSd05PSk1zY0o3VzRqazRfYkZIdGlOVm9DNlpDLTJlVHBVN1hrR29QOWJvT3hNT1ZaV2hrc192QkF5Z0NERXl2aTNhVzdZaXUtMmNhRTVENm45UDRUZzQwT3NVZERIZm5QZzhDN215OWZ3VE9DY01DRjFNOFBWSHhlZ0VyRXlyQUJVXzZLVlpVYk4tanZnS0ZpU3pqWG9iYWJzdFdoRWZfN0JzREtwT3RJM0NMdE5MS3ZDbmhpSQ?oc=5",
@@ -8,7 +11,11 @@ window.DECIPHER_DATA = [
     "state": "Tamil Nadu",
     "lat": 12.4947,
     "lon": 78.5645,
-    "mineral": "Sandstone"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 4,
+    "margin": 4
   },
   {
     "headline": "Congress protests new mining law In Jharkhand, demands probe into temple donations",
@@ -19,7 +26,13 @@ window.DECIPHER_DATA = [
     "state": "Jharkhand",
     "lat": 23.75,
     "lon": 85.5,
-    "mineral": "Mineral / Extraction"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [
+      "national_policy"
+    ],
+    "score": 1,
+    "margin": 1
   },
   {
     "headline": "Meghalaya Assembly resolves to oppose uranium mining",
@@ -30,7 +43,11 @@ window.DECIPHER_DATA = [
     "state": "Meghalaya",
     "lat": 25.5,
     "lon": 91.3333,
-    "mineral": "Uranium"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 4,
+    "margin": 4
   },
   {
     "headline": "Odisha govt rejects Opposition demand for special Assembly session on mining Bill",
@@ -41,7 +58,13 @@ window.DECIPHER_DATA = [
     "state": "Odisha",
     "lat": 20.5,
     "lon": 84.4167,
-    "mineral": "Mineral / Extraction"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [
+      "national_policy"
+    ],
+    "score": 1,
+    "margin": 1
   },
   {
     "headline": "Odisha mining Bill row deepens as Congress threatens economic blockade",
@@ -52,7 +75,13 @@ window.DECIPHER_DATA = [
     "state": "Odisha",
     "lat": 20.5,
     "lon": 84.4167,
-    "mineral": "Mineral / Extraction"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [
+      "national_policy"
+    ],
+    "score": 1,
+    "margin": 1
   },
   {
     "headline": "Lok Sabha passes bill restricting states’ power to tax minerals amid protests | India News",
@@ -63,7 +92,13 @@ window.DECIPHER_DATA = [
     "state": "Bihar",
     "lat": 25.8634,
     "lon": 86.0134,
-    "mineral": "Mineral / Extraction"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [
+      "national_policy"
+    ],
+    "score": 1,
+    "margin": 1
   },
   {
     "headline": "Amid protests, Lok Sabha passes mining Bill without debate",
@@ -74,7 +109,13 @@ window.DECIPHER_DATA = [
     "state": "Bihar",
     "lat": 25.8634,
     "lon": 86.0134,
-    "mineral": "Mineral / Extraction"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [
+      "national_policy"
+    ],
+    "score": 1,
+    "margin": 1
   },
   {
     "headline": "\"No Illegal Mining\": Himanta Sarma Junks Opposition Claims Amid Assam Flood",
@@ -85,7 +126,11 @@ window.DECIPHER_DATA = [
     "state": "Bihar",
     "lat": 25.0913,
     "lon": 86.1128,
-    "mineral": "Mineral / Extraction"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 1,
+    "margin": 1
   },
   {
     "headline": "Hunger strike against laterite quarry in Kannur suspended after Collector issues stop memo",
@@ -96,7 +141,11 @@ window.DECIPHER_DATA = [
     "state": "Kerala",
     "lat": 12.1667,
     "lon": 75.3333,
-    "mineral": "Mineral / Extraction"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 1,
+    "margin": 1
   },
   {
     "headline": "Clash erupts between two groups over proposed stone quarry near Singampunari",
@@ -107,7 +156,11 @@ window.DECIPHER_DATA = [
     "state": "Tamil Nadu",
     "lat": 10.1862,
     "lon": 78.415,
-    "mineral": "Sandstone"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 4,
+    "margin": 4
   },
   {
     "headline": "Six cops injured as villagers clash with police in Chhattisgarh’s Surajpur coal mine protest",
@@ -118,7 +171,11 @@ window.DECIPHER_DATA = [
     "state": "Chhattisgarh",
     "lat": 21.5,
     "lon": 82.0,
-    "mineral": "Coal"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 4,
+    "margin": 4
   },
   {
     "headline": "Navi Mumbai residents and activists protest ongoing illegal quarry blasting in Kharghar",
@@ -129,7 +186,11 @@ window.DECIPHER_DATA = [
     "state": "Maharashtra",
     "lat": 19.0368,
     "lon": 73.0158,
-    "mineral": "Mineral / Extraction"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 2,
+    "margin": 2
   },
   {
     "headline": "Villagers protest against new quarry near Manapparai",
@@ -140,7 +201,11 @@ window.DECIPHER_DATA = [
     "state": "Tamil Nadu",
     "lat": 10.6077,
     "lon": 78.4258,
-    "mineral": "Mineral / Extraction"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 1,
+    "margin": 1
   },
   {
     "headline": "Row erupts over alleged mining on sacred hill, YSRCP to hold ‘Chalo Panchadarla’ protest",
@@ -151,7 +216,11 @@ window.DECIPHER_DATA = [
     "state": "Himachal Pradesh",
     "lat": 32.8359,
     "lon": 76.2141,
-    "mineral": "Mineral / Extraction"
+    "type": "conservation",
+    "type_name": "Conservation and Biodiversity Conflicts",
+    "tags": [],
+    "score": 3,
+    "margin": 2
   },
   {
     "headline": "Minister reviews Pudukkottai quarry after villagers’ protest",
@@ -162,7 +231,11 @@ window.DECIPHER_DATA = [
     "state": "Tamil Nadu",
     "lat": 10.35,
     "lon": 78.9,
-    "mineral": "Mineral / Extraction"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 1,
+    "margin": 1
   },
   {
     "headline": "Amidst opposition to a new stone quarry, Minister inspects site in Pudukottai district",
@@ -173,7 +246,11 @@ window.DECIPHER_DATA = [
     "state": "Tamil Nadu",
     "lat": 10.3813,
     "lon": 78.8214,
-    "mineral": "Sandstone"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 4,
+    "margin": 4
   },
   {
     "headline": "Why Meghalaya CM Conrad K. Sangma Opposed the Mining Of Uranium? Here’s All You Need to Know",
@@ -184,7 +261,11 @@ window.DECIPHER_DATA = [
     "state": "Meghalaya",
     "lat": 25.5,
     "lon": 91.3333,
-    "mineral": "Uranium"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 1,
+    "margin": 1
   },
   {
     "headline": "Residents protest operation of stone quarry near Vandavasi",
@@ -195,7 +276,11 @@ window.DECIPHER_DATA = [
     "state": "Tamil Nadu",
     "lat": 12.5043,
     "lon": 79.6056,
-    "mineral": "Sandstone"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 4,
+    "margin": 4
   },
   {
     "headline": "BCY announces 'Chalo Mallayyakkonda' protest against proposed mining in Andhra Pradesh's Annamayya",
@@ -206,7 +291,11 @@ window.DECIPHER_DATA = [
     "state": "Himachal Pradesh",
     "lat": 32.8359,
     "lon": 76.2141,
-    "mineral": "Mineral / Extraction"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 1,
+    "margin": 1
   },
   {
     "headline": "In Kerala, UDF govt’s liquor policy, mineral sand mining plans face growing resistance",
@@ -217,7 +306,11 @@ window.DECIPHER_DATA = [
     "state": "Kerala",
     "lat": 10.4167,
     "lon": 76.5,
-    "mineral": "Sand"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 5,
+    "margin": 5
   },
   {
     "headline": "Man burnt alive, 4 injured in clash over sand mining dispute in Chhattisgarh | India News",
@@ -228,7 +321,11 @@ window.DECIPHER_DATA = [
     "state": "Chhattisgarh",
     "lat": 21.5,
     "lon": 82.0,
-    "mineral": "Sand"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 4,
+    "margin": 4
   },
   {
     "headline": "Congress questions Centre over Odisha bauxite mining protests",
@@ -239,7 +336,11 @@ window.DECIPHER_DATA = [
     "state": "Odisha",
     "lat": 20.5,
     "lon": 84.4167,
-    "mineral": "Bauxite"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 4,
+    "margin": 4
   },
   {
     "headline": "Gram Sabha consent fabricated to divert forest for mining bauxite, say villagers in Odisha’s Koraput",
@@ -250,7 +351,11 @@ window.DECIPHER_DATA = [
     "state": "Bihar",
     "lat": 25.8634,
     "lon": 86.0134,
-    "mineral": "Bauxite"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 1,
+    "margin": 0
   },
   {
     "headline": "Public hearing for limestone mining called off in Meghalaya after protest",
@@ -261,7 +366,11 @@ window.DECIPHER_DATA = [
     "state": "Meghalaya",
     "lat": 25.5,
     "lon": 91.3333,
-    "mineral": "Mineral / Extraction"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 1,
+    "margin": 1
   },
   {
     "headline": "Odisha mining project protest: Congress seeks independent probe; alleges PESA, FRA violations",
@@ -272,7 +381,11 @@ window.DECIPHER_DATA = [
     "state": "Odisha",
     "lat": 20.5,
     "lon": 84.4167,
-    "mineral": "Mineral / Extraction"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 4,
+    "margin": 4
   },
   {
     "headline": "Axe-wielding anti-mining Odisha tribals clash with police; 58 cops among 70 injured in stir against road",
@@ -283,7 +396,11 @@ window.DECIPHER_DATA = [
     "state": "Odisha",
     "lat": 20.5,
     "lon": 84.4167,
-    "mineral": "Mineral / Extraction"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 4,
+    "margin": 4
   },
   {
     "headline": "Several villagers, police personnel injured in clash in Odisha amid protests against mining of bauxite",
@@ -294,7 +411,11 @@ window.DECIPHER_DATA = [
     "state": "Odisha",
     "lat": 20.5,
     "lon": 84.4167,
-    "mineral": "Bauxite"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 1,
+    "margin": 1
   },
   {
     "headline": "Odisha: Tribals clash with police over bauxite mine road project, 40 personnel injured | Hindustan Times",
@@ -305,7 +426,11 @@ window.DECIPHER_DATA = [
     "state": "Odisha",
     "lat": 20.5,
     "lon": 84.4167,
-    "mineral": "Bauxite"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 4,
+    "margin": 4
   },
   {
     "headline": "Congress alleges irregularities in land acquisition for Adani coal block in M.P.’s Singrauli, seeks joint panel",
@@ -316,7 +441,11 @@ window.DECIPHER_DATA = [
     "state": "Bihar",
     "lat": 26.5429,
     "lon": 84.8051,
-    "mineral": "Coal"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 4,
+    "margin": 1
   },
   {
     "headline": "Stones Thrown In Madhya Pradesh's Dhar As Villagers Protest Survey For Quarry",
@@ -327,7 +456,11 @@ window.DECIPHER_DATA = [
     "state": "Jharkhand",
     "lat": 24.1617,
     "lon": 83.8489,
-    "mineral": "Mineral / Extraction"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 1,
+    "margin": 1
   },
   {
     "headline": "State leaders meet Rahul over Barkagaon mining displacement concerns",
@@ -338,7 +471,11 @@ window.DECIPHER_DATA = [
     "state": "Bihar",
     "lat": 25.4413,
     "lon": 84.1062,
-    "mineral": "Mineral / Extraction"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 1,
+    "margin": 0
   },
   {
     "headline": "Farmers lay siege to Tiruchuli taluk office protesting against permission granted for stone quarry in Vadapalai",
@@ -349,7 +486,11 @@ window.DECIPHER_DATA = [
     "state": "Tamil Nadu",
     "lat": 9.5353,
     "lon": 78.2005,
-    "mineral": "Sandstone"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 4,
+    "margin": 4
   },
   {
     "headline": "Villagers block stretch near Tirupattur in protest against non-stop operation of lorries to stone quarry",
@@ -360,7 +501,11 @@ window.DECIPHER_DATA = [
     "state": "Tamil Nadu",
     "lat": 12.4947,
     "lon": 78.5645,
-    "mineral": "Sandstone"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 4,
+    "margin": 4
   },
   {
     "headline": "Sivaganga farmers stage protest against graphite extraction",
@@ -371,7 +516,11 @@ window.DECIPHER_DATA = [
     "state": "Tamil Nadu",
     "lat": 9.9276,
     "lon": 78.5376,
-    "mineral": "Mineral / Extraction"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 1,
+    "margin": 1
   },
   {
     "headline": "Chhattisgarh tribals, villagers hold mass rally against mining, deforestation in Surguja",
@@ -382,7 +531,11 @@ window.DECIPHER_DATA = [
     "state": "Chhattisgarh",
     "lat": 21.5,
     "lon": 82.0,
-    "mineral": "Mineral / Extraction"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 1,
+    "margin": 1
   },
   {
     "headline": "Tribal groups in Surguja protest over mining projects & forest clearances",
@@ -393,7 +546,11 @@ window.DECIPHER_DATA = [
     "state": "Chhattisgarh",
     "lat": 22.8962,
     "lon": 83.0963,
-    "mineral": "Mineral / Extraction"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 1,
+    "margin": 1
   },
   {
     "headline": "Chhattisgarh: Bailadila hills protest erupt in Dantewada as youth, political parties oppose mining",
@@ -404,7 +561,11 @@ window.DECIPHER_DATA = [
     "state": "Chhattisgarh",
     "lat": 21.5,
     "lon": 82.0,
-    "mineral": "Mineral / Extraction"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 1,
+    "margin": 1
   },
   {
     "headline": "Special Report: Supreme Court Pauses Aravalli Mining as Gen Z Protests Rise; Weather Extremes Mark 2026 Transition - India Today",
@@ -415,7 +576,11 @@ window.DECIPHER_DATA = [
     "state": "Karnataka",
     "lat": 15.7513,
     "lon": 74.8892,
-    "mineral": "Mineral / Extraction"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 1,
+    "margin": 1
   },
   {
     "headline": "Villagers oppose graphite extraction in Sivaganga",
@@ -426,7 +591,11 @@ window.DECIPHER_DATA = [
     "state": "Tamil Nadu",
     "lat": 9.9276,
     "lon": 78.5376,
-    "mineral": "Mineral / Extraction"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 1,
+    "margin": 1
   },
   {
     "headline": "Chhattisgarh unrest: Coal block protest turns violent in Tamnar; several cops injured, vehicles torched",
@@ -437,7 +606,11 @@ window.DECIPHER_DATA = [
     "state": "Chhattisgarh",
     "lat": 21.5,
     "lon": 82.0,
-    "mineral": "Coal"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 3,
+    "margin": 3
   },
   {
     "headline": "Police, anti-mining protesters clash in Chhattisgarh’s Raigarh; many injured",
@@ -448,7 +621,11 @@ window.DECIPHER_DATA = [
     "state": "Chhattisgarh",
     "lat": 21.5,
     "lon": 82.0,
-    "mineral": "Mineral / Extraction"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 4,
+    "margin": 4
   },
   {
     "headline": "Aravalli hills protest and mining debate explained",
@@ -459,7 +636,11 @@ window.DECIPHER_DATA = [
     "state": "Other States",
     "lat": 24.8772,
     "lon": 73.3007,
-    "mineral": "Mineral / Extraction"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 1,
+    "margin": 1
   },
   {
     "headline": "Chhattisgarh Assembly: Opposition alleged deforestation and mining claims create uproar",
@@ -470,7 +651,11 @@ window.DECIPHER_DATA = [
     "state": "Chhattisgarh",
     "lat": 21.5,
     "lon": 82.0,
-    "mineral": "Mineral / Extraction"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 1,
+    "margin": 1
   },
   {
     "headline": "Adani coal mine: Madhya Pradesh Congress MLAs protest felling of nearly 6 lakh trees in Singrauli",
@@ -481,7 +666,11 @@ window.DECIPHER_DATA = [
     "state": "Madhya Pradesh",
     "lat": 23.5,
     "lon": 78.5,
-    "mineral": "Coal"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 5,
+    "margin": 5
   },
   {
     "headline": "Protest against Chhattisgarh coal mine turns violent, over 30 cops injured | India News",
@@ -492,7 +681,11 @@ window.DECIPHER_DATA = [
     "state": "Chhattisgarh",
     "lat": 21.5,
     "lon": 82.0,
-    "mineral": "Coal"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 4,
+    "margin": 4
   },
   {
     "headline": "Chhattisgarh: 40 policemen, several villagers injured in clash over coal mine extension project in Surguj",
@@ -503,7 +696,11 @@ window.DECIPHER_DATA = [
     "state": "Chhattisgarh",
     "lat": 21.5,
     "lon": 82.0,
-    "mineral": "Coal"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 4,
+    "margin": 4
   },
   {
     "headline": "Around 40 cops injured as villagers clash over mine land expansion in Chhattisgarh",
@@ -514,7 +711,11 @@ window.DECIPHER_DATA = [
     "state": "Chhattisgarh",
     "lat": 21.5,
     "lon": 82.0,
-    "mineral": "Mineral / Extraction"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 1,
+    "margin": 1
   },
   {
     "headline": "Protest against coal mining turns violent in Chhattisgarh’s Surguja, police personnel injured",
@@ -525,7 +726,11 @@ window.DECIPHER_DATA = [
     "state": "Chhattisgarh",
     "lat": 21.5,
     "lon": 82.0,
-    "mineral": "Coal"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 4,
+    "margin": 4
   },
   {
     "headline": "Chhattisgarh tribals on sit-in against mining project",
@@ -536,7 +741,11 @@ window.DECIPHER_DATA = [
     "state": "Chhattisgarh",
     "lat": 21.5,
     "lon": 82.0,
-    "mineral": "Mineral / Extraction"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 4,
+    "margin": 4
   },
   {
     "headline": "Jharkhand Man Who Protested Illegal Sand Mining Run Over By Tractor",
@@ -547,7 +756,11 @@ window.DECIPHER_DATA = [
     "state": "Jharkhand",
     "lat": 23.75,
     "lon": 85.5,
-    "mineral": "Sand"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 4,
+    "margin": 4
   },
   {
     "headline": "19 Arrested For Illegal Sand Mining In Bengal after BJP MLA-Worker Clash",
@@ -558,7 +771,11 @@ window.DECIPHER_DATA = [
     "state": "West Bengal",
     "lat": 24.0,
     "lon": 88.0,
-    "mineral": "Sand"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 4,
+    "margin": 4
   },
   {
     "headline": "Public convention in Suri protests against the Deocha Pachami mining project of the West Bengal government",
@@ -569,7 +786,11 @@ window.DECIPHER_DATA = [
     "state": "West Bengal",
     "lat": 24.0,
     "lon": 88.0,
-    "mineral": "Mineral / Extraction"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 4,
+    "margin": 4
   },
   {
     "headline": "Gram sabha resolution to oppose Dahegaon Gowari coal mine on Aug 20",
@@ -580,7 +801,11 @@ window.DECIPHER_DATA = [
     "state": "Bihar",
     "lat": 25.8634,
     "lon": 86.0134,
-    "mineral": "Coal"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 4,
+    "margin": 4
   },
   {
     "headline": "12 hurt in clash over NTPC’s new coal mining project in Hazaribag",
@@ -591,7 +816,11 @@ window.DECIPHER_DATA = [
     "state": "Jharkhand",
     "lat": 24.0,
     "lon": 85.25,
-    "mineral": "Coal"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 4,
+    "margin": 4
   },
   {
     "headline": "People from two villages clash over illegal sand mining from Krishna river",
@@ -602,7 +831,11 @@ window.DECIPHER_DATA = [
     "state": "Andhra Pradesh",
     "lat": 16.3031,
     "lon": 80.9957,
-    "mineral": "Sand"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 4,
+    "margin": 4
   },
   {
     "headline": "Odisha police turn Medha Patkar, activists away from Rayagada where resistance against bauxite mining simmering",
@@ -613,7 +846,11 @@ window.DECIPHER_DATA = [
     "state": "Odisha",
     "lat": 20.5,
     "lon": 84.4167,
-    "mineral": "Bauxite"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 4,
+    "margin": 4
   },
   {
     "headline": "Quarry road protest near Bengaluru turns violent, one injured in firing",
@@ -624,7 +861,11 @@ window.DECIPHER_DATA = [
     "state": "Karnataka",
     "lat": 12.9719,
     "lon": 77.5937,
-    "mineral": "Mineral / Extraction"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 1,
+    "margin": 1
   },
   {
     "headline": "Tribal protest against Balada bauxite mining intensifies in Odisha",
@@ -635,7 +876,11 @@ window.DECIPHER_DATA = [
     "state": "Odisha",
     "lat": 18.8162,
     "lon": 83.9229,
-    "mineral": "Bauxite"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 4,
+    "margin": 4
   },
   {
     "headline": "Environmental activists oppose ‘scientific’ coal mining in Meghalaya",
@@ -646,7 +891,11 @@ window.DECIPHER_DATA = [
     "state": "Meghalaya",
     "lat": 25.5,
     "lon": 91.3333,
-    "mineral": "Coal"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 4,
+    "margin": 4
   },
   {
     "headline": "Tribal protesters rally against bauxite mining project in Koraput",
@@ -657,7 +906,11 @@ window.DECIPHER_DATA = [
     "state": "Odisha",
     "lat": 19.0,
     "lon": 83.0,
-    "mineral": "Bauxite"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 4,
+    "margin": 4
   },
   {
     "headline": "Villagers stage protest in Davangere seeking an end to illegal stone quarrying",
@@ -668,7 +921,11 @@ window.DECIPHER_DATA = [
     "state": "Karnataka",
     "lat": 14.43,
     "lon": 75.9,
-    "mineral": "Mineral / Extraction"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 3,
+    "margin": 3
   },
   {
     "headline": "Villagers stage fresh protests at West Bengal’s Deocha Pachami coal block, bring work to a halt",
@@ -679,7 +936,11 @@ window.DECIPHER_DATA = [
     "state": "West Bengal",
     "lat": 24.0,
     "lon": 88.0,
-    "mineral": "Coal"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 3,
+    "margin": 3
   },
   {
     "headline": "Kerala coast set to witness 24-hour protest against sea mining",
@@ -690,7 +951,11 @@ window.DECIPHER_DATA = [
     "state": "Kerala",
     "lat": 10.4167,
     "lon": 76.5,
-    "mineral": "Mineral / Extraction"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 1,
+    "margin": 1
   },
   {
     "headline": "Kollam DCC, Matsya Thozhilali Congress plan protest at sea against Centre’s offshore mining project",
@@ -701,7 +966,11 @@ window.DECIPHER_DATA = [
     "state": "Kerala",
     "lat": 8.9569,
     "lon": 76.8527,
-    "mineral": "Mineral / Extraction"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 4,
+    "margin": 4
   },
   {
     "headline": "Congress MPs stage protest in Parliament premises, flag issues of sand mining, animal attacks in Kerala",
@@ -712,7 +981,11 @@ window.DECIPHER_DATA = [
     "state": "Kerala",
     "lat": 10.4167,
     "lon": 76.5,
-    "mineral": "Sand"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 4,
+    "margin": 4
   },
   {
     "headline": "How Tamil Nadu Protesters Stopped Federal Tungsten Mining in Madurai’s Heritage Site - Frontline Magazine",
@@ -723,7 +996,11 @@ window.DECIPHER_DATA = [
     "state": "Tamil Nadu",
     "lat": 11.0,
     "lon": 78.3333,
-    "mineral": "Mineral / Extraction"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 1,
+    "margin": 1
   },
   {
     "headline": "Tamil Nadu: Villagers of Madurai district stage protest against tungsten mining project - India Today",
@@ -734,7 +1011,11 @@ window.DECIPHER_DATA = [
     "state": "Tamil Nadu",
     "lat": 11.0,
     "lon": 78.3333,
-    "mineral": "Mineral / Extraction"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 4,
+    "margin": 4
   },
   {
     "headline": "Locals protest ‘illegal’ mining in Charkhi Dadri | Hindustan Times",
@@ -745,7 +1026,11 @@ window.DECIPHER_DATA = [
     "state": "Haryana",
     "lat": 28.5917,
     "lon": 76.2716,
-    "mineral": "Mineral / Extraction"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 1,
+    "margin": 1
   },
   {
     "headline": "Madurai farmers, villagers take out rally against tungsten mining project",
@@ -756,7 +1041,11 @@ window.DECIPHER_DATA = [
     "state": "Tamil Nadu",
     "lat": 9.89,
     "lon": 78.03,
-    "mineral": "Mineral / Extraction"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 4,
+    "margin": 4
   },
   {
     "headline": "Protests reignite over mining fears in Odisha’s sacred Gandhamardan Hills",
@@ -767,7 +1056,11 @@ window.DECIPHER_DATA = [
     "state": "Odisha",
     "lat": 20.5,
     "lon": 84.4167,
-    "mineral": "Mineral / Extraction"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 1,
+    "margin": 1
   },
   {
     "headline": "Over 20 panchayats oppose tungsten mining proposal in Madurai",
@@ -778,7 +1071,11 @@ window.DECIPHER_DATA = [
     "state": "Tamil Nadu",
     "lat": 9.89,
     "lon": 78.03,
-    "mineral": "Mineral / Extraction"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 1,
+    "margin": 1
   },
   {
     "headline": "T.N. govt should oppose Vedanta’s tungsten mining in Madurai to avoid another Thoothukudi Sterlite tragedy: activists",
@@ -789,7 +1086,11 @@ window.DECIPHER_DATA = [
     "state": "Tamil Nadu",
     "lat": 9.89,
     "lon": 78.03,
-    "mineral": "Mineral / Extraction"
+    "type": "industrial_pollution",
+    "type_name": "Industrial Pollution Conflicts",
+    "tags": [],
+    "score": 6,
+    "margin": 4
   },
   {
     "headline": "Ama Governor: Oliver Barker-Vormawor denied bail as Ghana court release oda anti-illegal gold mining protesters",
@@ -800,7 +1101,11 @@ window.DECIPHER_DATA = [
     "state": "Rajasthan",
     "lat": 25.7566,
     "lon": 72.8229,
-    "mineral": "Mineral / Extraction"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 1,
+    "margin": 1
   },
   {
     "headline": "Galamsey protests latest: Protesters begin three-day demonstration to pressure Ghana government against illegal mining",
@@ -811,7 +1116,11 @@ window.DECIPHER_DATA = [
     "state": "Rajasthan",
     "lat": 25.7566,
     "lon": 72.8229,
-    "mineral": "Mineral / Extraction"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 1,
+    "margin": 1
   },
   {
     "headline": "Organisations take out protest march decrying illegal sand extraction around Pavoor-Uliya Kudru",
@@ -822,7 +1131,11 @@ window.DECIPHER_DATA = [
     "state": "Karnataka",
     "lat": 12.8323,
     "lon": 74.8618,
-    "mineral": "Sand"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 1,
+    "margin": 1
   },
   {
     "headline": "After anti-refinery protests, Nanar villagers to unite against bauxite mining project | Mumbai news",
@@ -833,7 +1146,11 @@ window.DECIPHER_DATA = [
     "state": "Jammu & Kashmir",
     "lat": 33.9317,
     "lon": 75.0773,
-    "mineral": "Bauxite"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 4,
+    "margin": 1
   },
   {
     "headline": "Protest in Ballari against decision to allow fresh mining activities in Sandur forests",
@@ -844,7 +1161,11 @@ window.DECIPHER_DATA = [
     "state": "Karnataka",
     "lat": 15.15,
     "lon": 76.55,
-    "mineral": "Mineral / Extraction"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 1,
+    "margin": 1
   },
   {
     "headline": "Villagers oppose operation of stone quarry at Sokkampatti",
@@ -855,7 +1176,11 @@ window.DECIPHER_DATA = [
     "state": "Tamil Nadu",
     "lat": 10.3128,
     "lon": 78.4655,
-    "mineral": "Sandstone"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 4,
+    "margin": 4
   },
   {
     "headline": "Tribals facing atrocities under tribal CM: Chhattisgarh Congress chief at anti-mining protest in Hasdeo",
@@ -866,7 +1191,11 @@ window.DECIPHER_DATA = [
     "state": "Chhattisgarh",
     "lat": 21.5,
     "lon": 82.0,
-    "mineral": "Mineral / Extraction"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 5,
+    "margin": 5
   },
   {
     "headline": "Adivasi leaders opposing iron mines in Maharashtra arrested",
@@ -877,7 +1206,11 @@ window.DECIPHER_DATA = [
     "state": "Maharashtra",
     "lat": 19.5,
     "lon": 76.0,
-    "mineral": "Iron Ore"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 1,
+    "margin": 1
   },
   {
     "headline": "Tamil Nadu farmers stage protest as mining activities destroy harvest-ready crops",
@@ -888,7 +1221,11 @@ window.DECIPHER_DATA = [
     "state": "Tamil Nadu",
     "lat": 11.0,
     "lon": 78.3333,
-    "mineral": "Mineral / Extraction"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 1,
+    "margin": 1
   },
   {
     "headline": "Teen gang raped in Gadchiroli, protests erupt over atrocity, mining",
@@ -899,7 +1236,11 @@ window.DECIPHER_DATA = [
     "state": "Maharashtra",
     "lat": 19.8,
     "lon": 80.2,
-    "mineral": "Mineral / Extraction"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 1,
+    "margin": 1
   },
   {
     "headline": "Quarry owners across Kerala threaten to intensify protest",
@@ -910,7 +1251,11 @@ window.DECIPHER_DATA = [
     "state": "Kerala",
     "lat": 10.4167,
     "lon": 76.5,
-    "mineral": "Mineral / Extraction"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 1,
+    "margin": 1
   },
   {
     "headline": "Protests in Hasdeo Aranya | 10 years with a coal mine for a backyard",
@@ -921,7 +1266,11 @@ window.DECIPHER_DATA = [
     "state": "Madhya Pradesh",
     "lat": 22.7016,
     "lon": 76.0907,
-    "mineral": "Coal"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 5,
+    "margin": 5
   },
   {
     "headline": "Adani Group: Chhattisgarh tribes' year-long protest against tycoon's coal mine",
@@ -932,7 +1281,11 @@ window.DECIPHER_DATA = [
     "state": "Bihar",
     "lat": 26.5429,
     "lon": 84.8051,
-    "mineral": "Coal"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 5,
+    "margin": 5
   },
   {
     "headline": "German police carry Greta Thunberg away from coal mine protest",
@@ -943,7 +1296,11 @@ window.DECIPHER_DATA = [
     "state": "Punjab",
     "lat": 32.351,
     "lon": 75.7728,
-    "mineral": "Coal"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 4,
+    "margin": 4
   },
   {
     "headline": "Odisha: Villagers protest Jamkani coal mining operations, demand compensation | India News",
@@ -954,7 +1311,11 @@ window.DECIPHER_DATA = [
     "state": "Odisha",
     "lat": 20.5,
     "lon": 84.4167,
-    "mineral": "Coal"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 4,
+    "margin": 4
   },
   {
     "headline": "Protests over toxic gold mining at Nile: Will there be truce in Sudan",
@@ -965,7 +1326,11 @@ window.DECIPHER_DATA = [
     "state": "Punjab",
     "lat": 31.0992,
     "lon": 75.02,
-    "mineral": "Mineral / Extraction"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 1,
+    "margin": 0
   },
   {
     "headline": "Explained | The coal mining protests in the Hasdeo Aranya region",
@@ -976,7 +1341,11 @@ window.DECIPHER_DATA = [
     "state": "Madhya Pradesh",
     "lat": 22.7016,
     "lon": 76.0907,
-    "mineral": "Coal"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 5,
+    "margin": 5
   },
   {
     "headline": "Chhattisgarh: Won't budge till all coal mine projects withdrawn, say protesters on 111th day of stir",
@@ -987,7 +1356,11 @@ window.DECIPHER_DATA = [
     "state": "Chhattisgarh",
     "lat": 21.5,
     "lon": 82.0,
-    "mineral": "Coal"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 4,
+    "margin": 4
   },
   {
     "headline": "Environmentalists protest Chhattisgarh’s green signal to mining projects in Hasdeo Aranya",
@@ -998,7 +1371,11 @@ window.DECIPHER_DATA = [
     "state": "Chhattisgarh",
     "lat": 21.5,
     "lon": 82.0,
-    "mineral": "Mineral / Extraction"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 2,
+    "margin": 2
   },
   {
     "headline": "Visakhapatnam: tribal women stage protest seeking action against ‘mining mafia’",
@@ -1009,7 +1386,11 @@ window.DECIPHER_DATA = [
     "state": "Andhra Pradesh",
     "lat": 17.7333,
     "lon": 83.2667,
-    "mineral": "Mineral / Extraction"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 1,
+    "margin": 1
   },
   {
     "headline": "Clash With Cops, Women Handcuffed In Bihar Illegal Sand Mining Crackdown",
@@ -1020,7 +1401,11 @@ window.DECIPHER_DATA = [
     "state": "Bihar",
     "lat": 25.75,
     "lon": 85.75,
-    "mineral": "Sand"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 4,
+    "margin": 4
   },
   {
     "headline": "Mali Hill bauxite mine: Villagers resist project as Odisha govt extends Hindalco’s mining lease",
@@ -1031,7 +1416,11 @@ window.DECIPHER_DATA = [
     "state": "Odisha",
     "lat": 20.5,
     "lon": 84.4167,
-    "mineral": "Bauxite"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 9,
+    "margin": 9
   },
   {
     "headline": "Villagers oppose opening up of Hasdeo Arand forest for coal mining in Chhattisgarh | India News",
@@ -1042,7 +1431,11 @@ window.DECIPHER_DATA = [
     "state": "Chhattisgarh",
     "lat": 21.1043,
     "lon": 82.1831,
-    "mineral": "Coal"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 5,
+    "margin": 5
   },
   {
     "headline": "Tribals, Forest-Dwellers March 300Km To Protest Coal Mining Projects In Chhattisgarh",
@@ -1053,7 +1446,11 @@ window.DECIPHER_DATA = [
     "state": "Chhattisgarh",
     "lat": 21.5,
     "lon": 82.0,
-    "mineral": "Coal"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 4,
+    "margin": 4
   },
   {
     "headline": "NTK protests against quarrying in Kanniyakumari for Vizhinjam port",
@@ -1064,7 +1461,11 @@ window.DECIPHER_DATA = [
     "state": "Tamil Nadu",
     "lat": 8.32,
     "lon": 77.34,
-    "mineral": "Mineral / Extraction"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 3,
+    "margin": 3
   },
   {
     "headline": "Proposed amendments to Coal Bearing Areas Act will change land acquisition for mining: Experts",
@@ -1075,7 +1476,11 @@ window.DECIPHER_DATA = [
     "state": "West Bengal",
     "lat": 27.1319,
     "lon": 88.6836,
-    "mineral": "Coal"
+    "type": "land_agrarian",
+    "type_name": "Land-Use and Agrarian Conflicts",
+    "tags": [],
+    "score": 3,
+    "margin": 2
   },
   {
     "headline": "Tamil Nadu: Kanchipuram residents protest illegal quarrying",
@@ -1086,7 +1491,11 @@ window.DECIPHER_DATA = [
     "state": "Tamil Nadu",
     "lat": 11.0,
     "lon": 78.3333,
-    "mineral": "Mineral / Extraction"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 3,
+    "margin": 3
   },
   {
     "headline": "Rajasthan: Workers protest after 2 labourers killed at Rampura Agucha mine, demand compensation",
@@ -1097,7 +1506,11 @@ window.DECIPHER_DATA = [
     "state": "Rajasthan",
     "lat": 26.5833,
     "lon": 73.8333,
-    "mineral": "Mineral / Extraction"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 1,
+    "margin": 1
   },
   {
     "headline": "Mumbai: Decision to resume quarrying in Parsik Hill meets with resistance | Mumbai news",
@@ -1108,7 +1521,11 @@ window.DECIPHER_DATA = [
     "state": "Maharashtra",
     "lat": 19.0728,
     "lon": 72.8826,
-    "mineral": "Mineral / Extraction"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 3,
+    "margin": 3
   },
   {
     "headline": "Assam: Thousands protest closure of North Eastern Coalfields, call to protect Dehing Patkai Wildlife Sanctuary",
@@ -1119,7 +1536,11 @@ window.DECIPHER_DATA = [
     "state": "Assam",
     "lat": 26.0,
     "lon": 93.0,
-    "mineral": "Mineral / Extraction"
+    "type": "conservation",
+    "type_name": "Conservation and Biodiversity Conflicts",
+    "tags": [],
+    "score": 5,
+    "margin": 5
   },
   {
     "headline": "‘No gram sabha nod for Bailadila mining,’ reveals probe | India News",
@@ -1130,7 +1551,11 @@ window.DECIPHER_DATA = [
     "state": "Bihar",
     "lat": 25.8634,
     "lon": 86.0134,
-    "mineral": "Mineral / Extraction"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 1,
+    "margin": 1
   },
   {
     "headline": "PSU coal miner in Odisha loses over ₹2 cr after protest over goat’s death | India News",
@@ -1141,7 +1566,11 @@ window.DECIPHER_DATA = [
     "state": "Odisha",
     "lat": 20.5,
     "lon": 84.4167,
-    "mineral": "Coal"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 1,
+    "margin": 1
   },
   {
     "headline": "Telangana: Anti-uranium mining protest gains steam, total shutdown in 2 mandals",
@@ -1152,7 +1581,11 @@ window.DECIPHER_DATA = [
     "state": "Telangana",
     "lat": 17.8333,
     "lon": 79.0833,
-    "mineral": "Uranium"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 4,
+    "margin": 4
   },
   {
     "headline": "Chhattisgarh mining protests continue on Day 5",
@@ -1163,7 +1596,11 @@ window.DECIPHER_DATA = [
     "state": "Chhattisgarh",
     "lat": 21.5,
     "lon": 82.0,
-    "mineral": "Mineral / Extraction"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 1,
+    "margin": 1
   },
   {
     "headline": "Chhattisgarh stops mining in Bailadila hills after protests by tribals | India News",
@@ -1174,7 +1611,11 @@ window.DECIPHER_DATA = [
     "state": "Chhattisgarh",
     "lat": 21.5,
     "lon": 82.0,
-    "mineral": "Mineral / Extraction"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 1,
+    "margin": 1
   },
   {
     "headline": "Farmers walk to Bengaluru to protest against illegal mining around KRS Dam",
@@ -1185,6 +1626,11 @@ window.DECIPHER_DATA = [
     "state": "Karnataka",
     "lat": 12.9719,
     "lon": 77.5937,
-    "mineral": "Mineral / Extraction"
+    "type": "extractive",
+    "type_name": "Extractive Resource Conflicts",
+    "tags": [],
+    "score": 1,
+    "margin": 0
   }
-];
+]
+};

@@ -1,289 +1,358 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Deciphering Conflicts — India Mining Conflicts &amp; Protests Map</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Conflictscape</title>
 
-  <!-- SEO -->
-  <meta name="description" content="Deciphering Conflicts maps community opposition to mining across India — Adivasi resistance, Gram Sabha rejections, road and rail blockades, dharnas and land-acquisition disputes — as live pins on an interactive map, from 2018 to the present." />
-  <meta name="robots" content="index, follow" />
+<meta name="description" content="Conflictscape reads ten Indian news outlets for environmental conflicts and sorts them into six types, each keyed to the element of social practice it disrupts. Browse by conflict type, by state, and by the outlet that reported it." />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#F3F4F1" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#131614" media="(prefers-color-scheme: dark)" />
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Deciphering Conflicts" />
-  <meta property="og:title" content="Deciphering Conflicts — India Mining Conflicts &amp; Protests Map" />
-  <meta property="og:description" content="Every documented mining protest in India, mapped. Adivasi resistance, Gram Sabha rejections, blockades and displacement disputes, 2018 to the present." />
-  <meta property="og:image" content="og-image.png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Conflictscape" />
+<meta property="og:title" content="Conflictscape" />
+<meta property="og:description" content="Environmental conflicts in India, read from ten news outlets and sorted into six types by the element of social practice each one disrupts." />
+<meta property="og:image" content="og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Conflictscape" />
+<meta name="twitter:description" content="Environmental conflicts in India, sorted into six types by the element of social practice each one disrupts." />
+<meta name="twitter:image" content="og-image.png" />
 
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Deciphering Conflicts — India Mining Conflicts &amp; Protests Map" />
-  <meta name="twitter:description" content="Every documented mining protest in India, mapped. 2018 to the present, updated every 6 hours." />
-  <meta name="twitter:image" content="og-image.png" />
-
-  <!-- Structured data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Deciphering Conflicts",
-    "alternateName": "Deciphering Conflicts — India Mining Conflicts & Protests Map",
-    "description": "Interactive map of mining conflicts and community protests across India, aggregated from ten national news outlets and updated every 6 hours.",
-    "inLanguage": "en-IN",
-    "publisher": {
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "Conflictscape",
+  "description": "Geocoded records of reported environmental conflicts in India, compiled from ten national news outlets and classified into six conflict types keyed to social practice theory. Each record carries a headline, publication date, outlet, place name, state, coordinates, conflict type and cross-cutting tags.",
+  "inLanguage": "en-IN",
+  "spatialCoverage": "India",
+  "isAccessibleForFree": true,
+  "creator": {
+    "@type": "Person",
+    "name": "Manu Thomas",
+    "affiliation": {
       "@type": "Organization",
-      "name": "Deciphering Conflicts",
-      "email": "nikunj@wilderlens.org"
+      "name": "Institute of Spatial Management, Wrocław University of Environmental and Life Sciences"
     }
   }
-  </script>
+}
+</script>
 
-  <!-- Fonts: Inter -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet" />
 
-  <!-- Leaflet -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
-  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+<link rel="stylesheet" href="style.css" />
+<link rel="manifest" href="manifest.json" />
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
 
-  <!-- Driver.js tour -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/driver.js@1.3.1/dist/driver.css" />
-
-  <link rel="stylesheet" href="style.css?v=20" />
-  <link rel="manifest" href="manifest.json" />
-  <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
+<script>
+  /* Set the theme before first paint so the page never flashes the wrong one. */
+  (function () {
+    var saved = null;
+    try { saved = localStorage.getItem('cs-theme'); } catch (e) {}
+    if (saved) document.documentElement.setAttribute('data-theme', saved);
+  })();
+</script>
 </head>
 <body>
-  <!-- Crawlable heading + intro for search engines (visually hidden; map fills the screen) -->
-  <div style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">
-    <h1>Deciphering Conflicts — India Mining Conflicts &amp; Protests Map</h1>
-    <p>Deciphering Conflicts maps documented community opposition to mining across India — Adivasi and farmer resistance, Gram Sabha rejections, public-hearing boycotts, road and rail blockades, dharnas, hunger strikes, displacement and land-acquisition disputes — as live pins on an interactive map of India's coal, bauxite, iron ore, sandstone, diamond, chromite, uranium and sand mining belts. Aggregated from NDTV, India.com, BBC News, Times of India, India Today, Republic, Hindustan Times, Mongabay India, The Hindu and Down To Earth, from 2018 to the present, and updated every six hours.</p>
-  </div>
 
-  <!-- ── Left Panel ─────────────────────────────────────────────────────── -->
-  <aside id="panel" aria-label="Filters and search">
+<a class="skip-link" href="#browse">Skip to the record</a>
 
-    <!-- Header -->
-    <div id="panel-header">
-      <div id="panel-brand">
-        <div id="panel-logo" aria-hidden="true">
-          <svg width="22" height="22" viewBox="0 0 100 100" fill="none">
-            <g transform="translate(50,50) scale(0.88)">
-              <path d="M-36,0 A36,36 0 0,1 -18,-31.18 L-9,-15.59 A18,18 0 0,0 -18,0 Z" fill="#10b981" opacity="0.85" />
-              <path d="M-18,-31.18 A36,36 0 0,1 18,-31.18 L9,-15.59 A18,18 0 0,0 -9,-15.59 Z" fill="#2dd4bf" opacity="0.9" />
-              <path d="M18,-31.18 A36,36 0 0,1 36,0 L18,0 A18,18 0 0,0 9,-15.59 Z" fill="#10b981" opacity="0.85" />
-              <path d="M36,0 A36,36 0 0,1 18,31.18 L9,15.59 A18,18 0 0,0 18,0 Z" fill="#2dd4bf" opacity="0.9" />
-              <path d="M18,31.18 A36,36 0 0,1 -18,31.18 L-9,15.59 A18,18 0 0,0 9,15.59 Z" fill="#10b981" opacity="0.85" />
-              <path d="M-18,31.18 A36,36 0 0,1 -36,0 L-18,0 A18,18 0 0,0 -9,15.59 Z" fill="#2dd4bf" opacity="0.9" />
-              <path d="M0,-13 C10,-9 12,7 0,16 C-12,7 -10,-9 0,-13 Z" fill="#34d399" />
-              <circle cx="0" cy="1" r="2.5" fill="#a7f3d0" />
-            </g>
-          </svg>
-        </div>
-        <div id="panel-title-group">
-          <span id="panel-title">Deciphering Conflicts</span>
-          <span id="panel-subtitle">Mining Protests (2018–Present)</span>
-          <a id="regional-link" href="regional/" aria-label="Switch to Regional Edition">
-            Regional Edition
-            <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
-          </a>
-        </div>
-      </div>
-      <button id="panel-toggle" aria-label="Collapse panel">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="15 18 9 12 15 6"/>
-        </svg>
+<!-- ══ Masthead ═══════════════════════════════════════════════════════════ -->
+<header class="masthead">
+  <div class="wrap">
+    <div class="masthead-top">
+      <h1 class="wordmark">Conflict<em>scape</em></h1>
+      <button class="theme-toggle" id="theme-toggle" type="button">
+        <span>Dark</span>
       </button>
     </div>
 
-    <!-- Body -->
-    <div id="panel-body">
-
-      <!-- Search -->
-      <div class="filter-section" style="padding-top:4px">
-        <div class="search-wrapper">
-          <svg class="search-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-          </svg>
-          <input id="search" type="text" placeholder="Search protests, mines, Adivasi marches, states…" autocomplete="off" aria-label="Search articles" />
-          <button id="search-clear" class="search-clear" aria-label="Clear search" style="display:none">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
-              <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
-            </svg>
-          </button>
-        </div>
+    <div class="masthead-grid">
+      <div>
+        <p class="eyebrow">Environmental conflicts in India, read from the press</p>
+        <p class="thesis" style="margin-top:.7rem">
+          A conflict is not a sector. It is a practice coming apart — and it comes
+          apart in one of six ways.
+        </p>
+        <p class="standfirst">
+          Conflictscape reads ten national news outlets for reported environmental
+          conflicts in India, and files each one by the element of social practice
+          it disrupts: the <b>materials</b> a community lives from, the
+          <b>competences</b> that let it defend them, or the <b>meanings</b> that
+          say what a place is for. Every record links back to the article it came
+          from. Browse by type, by state, and by outlet below.
+        </p>
       </div>
 
-      <!-- Geographical States -->
-      <div class="filter-section">
-        <button class="section-header open" data-target="state-body" aria-expanded="true">
-          <span class="section-label">Geographical States</span>
-          <svg class="chevron" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
-            <polyline points="6 9 12 15 18 9"/>
-          </svg>
-        </button>
-        <div class="section-body" id="state-body">
-          <div id="state-controls">
-            <button id="select-all-states" class="state-ctrl-btn">All States</button>
-            <button id="clear-states" class="state-ctrl-btn">Clear</button>
-          </div>
-          <div id="state-filters" role="group" aria-label="Geographical state filters">
-            <!-- Dynamically populated with state chips & counters -->
-          </div>
-        </div>
+      <div class="figures">
+        <dl id="figures"></dl>
       </div>
-
-      <!-- Date range -->
-      <div class="filter-section">
-        <button class="section-header open" data-target="date-body" aria-expanded="true">
-          <span class="section-label">Date range</span>
-          <svg class="chevron" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
-            <polyline points="6 9 12 15 18 9"/>
-          </svg>
-        </button>
-        <div class="section-body" id="date-body">
-          <div id="date-row">
-            <div class="date-field">
-              <label class="date-label" for="date-from">From</label>
-              <input type="date" id="date-from" min="2018-01-01" value="2018-01-01" />
-            </div>
-            <span class="date-sep" aria-hidden="true">—</span>
-            <div class="date-field">
-              <label class="date-label" for="date-to">To</label>
-              <input type="date" id="date-to" />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Source dropdown -->
-      <div class="filter-section" id="src-section">
-        <div class="src-dropdown-row">
-          <span class="section-label">Source</span>
-          <button id="src-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
-            <span id="src-dropdown-label">All sources</span>
-            <svg class="src-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-        </div>
-        <div id="src-dropdown-panel" hidden role="listbox" aria-multiselectable="true" aria-label="Source filter"></div>
-      </div>
-
-    </div><!-- /panel-body -->
-
-    <!-- Footer: stats + reset + meta -->
-    <div id="panel-footer">
-      <div id="stats" aria-live="polite"></div>
-      <div id="week-stats" aria-live="polite"></div>
-      <div id="history-bar"></div>
-      <button id="reset-btn">
-        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.78"/>
-        </svg>
-        Reset filters
-      </button>
-      <div id="footer-meta">
-        <span id="visit-count" aria-label="Total site visits">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-          <span id="visit-num">—</span>
-        </span>
-        <button id="tour-btn" aria-label="Take a guided tour">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-          Tour
-        </button>
-        <button id="about-btn" aria-label="About Deciphering Conflicts" onclick="document.getElementById('about-modal').removeAttribute('hidden')">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-          About
-        </button>
-      </div>
-    </div>
-
-  </aside>
-
-  <!-- ── Hotspot card ──────────────────────────────────────────────────── -->
-  <div id="hotspot-card" hidden aria-live="polite">
-    <div id="hotspot-header">
-      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-      Hotspot · This week
-    </div>
-    <div id="hotspot-place"></div>
-    <div id="hotspot-count"></div>
-  </div>
-
-  <!-- ── Source info popover ──────────────────────────────────────────── -->
-  <div id="src-popover" hidden role="tooltip" aria-live="polite"></div>
-
-  <!-- About modal -->
-  <div id="about-modal" hidden role="dialog" aria-modal="true" aria-label="About Deciphering Conflicts" onclick="if(event.target===this)this.setAttribute('hidden','')">
-    <div id="about-modal-box">
-      <div id="about-modal-head">
-        <span id="about-modal-title">About Deciphering Conflicts</span>
-        <button id="about-modal-close" aria-label="Close" onclick="document.getElementById('about-modal').setAttribute('hidden','')">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-        </button>
-      </div>
-      <p>Deciphering Conflicts is an automated system that reads ten Indian and international news outlets — NDTV, India.com, BBC News, Times of India, India Today, Republic, Hindustan Times, Mongabay India, The Hindu and Down To Earth — every 6 hours and maps reports of community protest against mining. No automated pipeline is perfect — articles may occasionally be missed or unrelated ones may slip through.</p>
-      <p>Spotted a missed article or a false positive? Want to get in touch for anything else? Write to us at <a href="mailto:nikunj@wilderlens.org">nikunj@wilderlens.org</a></p>
     </div>
   </div>
+</header>
 
-  <!-- ── Map ────────────────────────────────────────────────────────────── -->
-  <main id="map" aria-label="Deciphering Conflicts — India Mining Conflicts &amp; Protests Map"></main>
+<main class="wrap">
 
-  <!-- ── Chat widget ────────────────────────────────────────────────────── -->
-  <button id="chat-fab" aria-label="Ask Deciphering Conflicts" title="Ask Deciphering Conflicts">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-    </svg>
-  </button>
-  <div id="chat-widget" role="dialog" aria-label="Ask Deciphering Conflicts assistant" aria-modal="false">
-    <div id="chat-head">
-      <div id="chat-title">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-        </svg>
-        Ask Deciphering Conflicts
+  <!-- ══ What counts ═════════════════════════════════════════════════════ -->
+  <section id="scope">
+    <div class="section-head">
+      <p class="eyebrow">The inclusion rule</p>
+      <h2>What counts as a conflict here</h2>
+      <div class="prose">
+        <p>
+          Two things must be present before an article becomes a record: something
+          environmental at stake, and somebody contesting it. A clearance granted, a
+          pollution reading published, a policy announced — none of these is a
+          conflict until people object. The pipeline looks for both, in the headline
+          and the feed summary, and drops everything else.
+        </p>
       </div>
-      <button id="chat-close" aria-label="Close chat">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
-          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
-        </svg>
-      </button>
     </div>
-    <div id="chat-messages" role="log" aria-live="polite" aria-atomic="false"></div>
-    <div id="chat-input-row">
-      <input id="chat-input" type="text" placeholder="Ask about mining protests, states, minerals…" autocomplete="off" aria-label="Your question" maxlength="200" />
-      <button id="chat-send" aria-label="Send">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
-        </svg>
-      </button>
+
+    <div class="gates">
+      <div class="gate">
+        <h3>Kept</h3>
+        <ul>
+          <li>Place-based environmental conflicts — a named site, a named community</li>
+          <li>Contestation by the affected: protest, <i lang="hi">dharna</i>, <i lang="hi">gherao</i>, gram sabha refusal, a public hearing disrupted</li>
+          <li>Contestation through institutions: a petition, an NGT plea, a stay sought</li>
+          <li>National environmental policy protests — the EIA notification, the forest amendment — flagged separately so site-level cases can be read alone</li>
+        </ul>
+      </div>
+      <div class="gate out">
+        <h3>Not kept</h3>
+        <ul>
+          <li>Labour and privatisation disputes at the same sites — wages, retrenchment, disinvestment</li>
+          <li>Agricultural market policy, including the 2021 farm laws movement: a dispute over mandis and support prices, not over an environment</li>
+          <li>Wildlife-crime enforcement — a seizure, an arrest — which is policing, not community conflict</li>
+          <li>Disaster and accident reporting where nobody is contesting anything</li>
+        </ul>
+      </div>
     </div>
+  </section>
+
+  <!-- ══ The typology ════════════════════════════════════════════════════ -->
+  <section id="typology-section">
+    <div class="section-head">
+      <p class="eyebrow">The typology · click a type to filter the whole page</p>
+      <h2>Six types, one practice disruption each</h2>
+      <div class="prose">
+        <p>
+          The type is decided by what the conflict does to practice, not by the
+          sector of the actor involved. That is why a plantation company and a
+          state land bank land in the same type: enclosing farmland disrupts the
+          same configuration of materials and meanings whoever does the enclosing.
+          The three squares beside each type read
+          <b>materials · competences · meanings</b>, filled for the elements that
+          rupture.
+        </p>
+      </div>
+    </div>
+
+    <div class="typology" id="typology"></div>
+  </section>
+
+  <!-- ══ Water ═══════════════════════════════════════════════════════════ -->
+  <section id="water">
+    <div class="section-head">
+      <p class="eyebrow">The seventh type that isn't</p>
+      <h2>Water is a tag, not a type</h2>
+    </div>
+
+    <div class="water-layout">
+      <div class="prose">
+        <p>
+          Water conflicts in India are numerous and distinct enough to defend as a
+          seventh type — river diversion, irrigation rights, dam displacement,
+          groundwater drawdown. The reason they are not one here is that they do
+          not share a practice disruption. A bottling plant drawing down an aquifer
+          removes a resource. A canal reallocating irrigation water breaks an
+          agrarian practice. A reservoir submerging villages is built
+          infrastructure. Putting all three in one bucket would file them by
+          substance rather than by what they do — the one thing this typology
+          refuses to do everywhere else.
+        </p>
+        <p>
+          So water runs as a cross-cutting tag. Every water conflict keeps its
+          practice type <em>and</em> is countable as water, and the spread across
+          types is itself a finding rather than something the categories hide.
+        </p>
+        <p id="water-count" class="eyebrow" style="text-transform:none;letter-spacing:0;font-family:var(--sans)"></p>
+        <p style="margin-top:1rem">
+          <button class="link-btn" type="button" data-filter-tag="water">Filter to water-tagged records</button>
+        </p>
+      </div>
+
+      <div class="water-figure" id="water-figure"></div>
+    </div>
+  </section>
+
+  <!-- ══ States ══════════════════════════════════════════════════════════ -->
+  <section id="states">
+    <div class="section-head">
+      <p class="eyebrow">Second axis · click a state to filter</p>
+      <h2>Where the conflicts are reported</h2>
+      <div class="prose">
+        <p>
+          Bar length is the number of records; the segments inside it are the six
+          types, so the shape of a state's conflict profile reads at a glance
+          alongside its volume. Read this as reported conflict, not as conflict: a
+          state with an active regional press and a national bureau will be
+          over-represented against one without.
+        </p>
+      </div>
+    </div>
+
+    <div class="chart" id="state-chart"></div>
+    <div class="chart-foot">
+      <button class="link-btn" id="state-more" type="button" hidden></button>
+      <span class="eyebrow" id="state-note" style="text-transform:none;letter-spacing:0"></span>
+    </div>
+  </section>
+
+  <!-- ══ Sources ═════════════════════════════════════════════════════════ -->
+  <section id="sources">
+    <div class="section-head">
+      <p class="eyebrow">Third axis · click an outlet to filter</p>
+      <h2>Who reports them</h2>
+      <div class="prose">
+        <p>
+          Ten outlets are monitored: NDTV, India.com, BBC News, Times of India,
+          India Today, Republic, Hindustan Times, Mongabay India, The Hindu and
+          Down To Earth. They do not cover the same conflicts. The matrix below is
+          the reason the source axis exists at all — an archive that leaned on one
+          outlet would inherit that outlet's editorial interests as if they were
+          the distribution of conflict in India.
+        </p>
+      </div>
+    </div>
+
+    <div class="chart" id="source-chart"></div>
+
+    <div class="chart-foot" style="display:block;margin-top:2rem">
+      <p class="eyebrow" style="margin-bottom:.7rem">Outlet × conflict type</p>
+      <div class="matrix-scroll" id="matrix"></div>
+    </div>
+  </section>
+
+  <!-- ══ Browse ══════════════════════════════════════════════════════════ -->
+  <section id="browse" class="browse" tabindex="-1">
+    <div class="section-head">
+      <p class="eyebrow">The record</p>
+      <h2>Every article behind the numbers</h2>
+    </div>
+
+    <div class="toolbar">
+      <label class="search">
+        <span class="sr-only">Search headlines, places, states and outlets</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input id="search" type="search" autocomplete="off" placeholder="Search headline, place, state, outlet…" />
+      </label>
+      <div class="chips" id="chips"></div>
+      <span class="count-live num" id="count-live"></span>
+    </div>
+
+    <div class="browse-layout">
+      <div class="map-col"><div class="map-panel">
+        <div class="map-head">
+          <span class="map-title" id="map-count">—</span>
+          <span class="map-tools">
+            <button id="zoom-out" type="button" aria-label="Zoom out">−</button>
+            <button id="zoom-reset" type="button" aria-label="Reset the map view">◇</button>
+            <button id="zoom-in" type="button" aria-label="Zoom in">+</button>
+          </span>
+        </div>
+        <div class="map-stage" id="map-stage"></div>
+        <div class="map-note">
+          <span><i></i> Solid — the article named a specific place; the mark is that place.</span>
+          <span><i class="dash"></i> Dashed — only a state was named; the mark is that state's gazetteer point, not the conflict site.</span>
+          <span>Drag to pan, scroll to zoom. One mark is one article, not one verified event.</span>
+        </div>
+      </div></div>
+
+      <div>
+        <div class="list" id="list"></div>
+        <button class="link-btn more" id="list-more" type="button" hidden></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ Method ══════════════════════════════════════════════════════════ -->
+  <section id="method">
+    <div class="section-head">
+      <p class="eyebrow">Method</p>
+      <h2>How a headline becomes a record</h2>
+    </div>
+
+    <div class="method-grid">
+      <div>
+        <h3>The pipeline</h3>
+        <ol>
+          <li>Poll the ten outlets' own feeds for the last few days; search Google News with a <code>site:</code> filter per outlet to reach back to 2018.</li>
+          <li>Apply the conflict gate — an environmental object plus contestation, minus the excluded genres.</li>
+          <li>Score the text against six keyword lexicons; the highest-scoring type wins, and the gap to the runner-up is stored as the record's margin.</li>
+          <li>Resolve the place against a GeoNames-derived gazetteer, longest name match first, disambiguated by the state the article names.</li>
+          <li>Verify every stored link and drop the ones that 404 or bounce to a homepage.</li>
+        </ol>
+      </div>
+
+      <div>
+        <h3>What the numbers are not</h3>
+        <ul>
+          <li>Not a census of conflict. They are a census of <em>reporting</em> on conflict, by ten English-language outlets.</li>
+          <li>Not one row per conflict. A long-running case generates many articles; each is a record.</li>
+          <li>Not adjudicated. The classifier reads words, not merits. Records assigned on a margin of 1 or less are marked <span class="thin-flag">thin margin</span> and are the ones to read by hand.</li>
+          <li>Not exhaustive on place. Articles naming no resolvable place are dropped rather than guessed at.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Sources and licences</h3>
+        <ul>
+          <li>Article text and headlines remain the property of the publishing outlet; only the headline, date, outlet and link are stored.</li>
+          <li>Place names and coordinates from <a href="https://www.geonames.org/">GeoNames</a>, CC BY 4.0.</li>
+          <li>The typology is original to this project and grounded in social practice theory (Shove, Pantzar &amp; Watson, 2012).</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="colophon">
+    <p class="prose">
+      Conflictscape is built for the doctoral project <i>Typology and Determinants of
+      Environmental Conflicts in India through Social Practice Theory</i> at the
+      Institute of Spatial Management, Wrocław University of Environmental and Life
+      Sciences, funded by NCN PRELUDIUM 25.
+    </p>
+    <p class="cite">Thomas, M. (<span id="cite-year">2026</span>). <i>Conflictscape: reported environmental conflicts in India, 2018–present</i> [dataset]. Institute of Spatial Management, Wrocław University of Environmental and Life Sciences.</p>
   </div>
 
-  <!-- Scripts -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/driver.js@1.3.1/dist/driver.js.iife.js"></script>
-  <script src="data.js?v=32"></script>
-  <script src="map.js?v=32"></script>
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.getRegistrations().then(registrations => {
-        for (let registration of registrations) {
-          registration.unregister();
-        }
-      });
-    }
-    if ('caches' in window) {
-      caches.keys().then(names => {
-        for (let name of names) caches.delete(name);
-      });
-    }
-  </script>
+</main>
+
+<script src="india.js"></script>
+<script src="data.js"></script>
+<script src="app.js"></script>
+<script>
+  /* The first build registered a service worker that cached stale assets.
+     Keep clearing it so returning visitors are not served the old site. */
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistrations()
+      .then(function (rs) { rs.forEach(function (r) { r.unregister(); }); })
+      .catch(function () {});
+  }
+  if ('caches' in window) {
+    caches.keys().then(function (ns) { ns.forEach(function (n) { caches.delete(n); }); })
+      .catch(function () {});
+  }
+  document.getElementById('cite-year').textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
