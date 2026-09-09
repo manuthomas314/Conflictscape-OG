@@ -1,124 +1,167 @@
-# Deciphering Conflicts — India Mining Conflicts & Protests Monitor (2018–Present)
+# Conflictscape
 
-An interactive intelligence map tracking **community opposition, farmer agitations, and Adivasi resistance against mining activities across Indian states** from **2018 to the present**.
+Reported environmental conflicts in India, read from ten national news outlets
+and sorted into six types — each keyed to the element of social practice the
+conflict primarily disrupts.
 
----
+The site is one page: a narrative that explains the inclusion rule and the
+typology, ending in the working record. Everything the reader can click — a
+type card, a state bar, an outlet row, the water tag — is the same filter, so
+the argument and the browser never fall out of step.
 
-## 🗺️ Project Scope & Focus
-
-- **Specific Incident Criteria**: Documented public rallies, road/rail blockades, Gram Sabha rejections, sit-ins, and legal resistance specifically where **people and local communities protest against mining operations** (coal, bauxite, iron ore, sandstone, diamond, chromite, and uranium).
-- **Segmented by Geographical State**: State-level intelligence and multi-select filtering across key mining belts:
-  - **Chhattisgarh**: Hasdeo Arand tree felling opposition, Bailadila Deposit 13 tribal resistance, Raigarh coal block public hearing boycotts.
-  - **Jharkhand**: Latehar coal auction dharnas, Netarhat anti-displacement assemblies, Chaibasa iron ore resistance, Jharia fire-zone rehabilitation protests.
-  - **Odisha**: Niyamgiri Dongria Kondh defense, Sijimali & Mali Parbat bauxite protests, Dhinkia resistance, Keonjhar mineral corridor blockades.
-  - **West Bengal**: Deucha Pachami massive indigenous rallies and torchlight marches.
-  - **Goa**: Village protests against iron ore transport dust, water table depletion, and mining renewals.
-  - **Madhya Pradesh**: #SaveBuxwaha diamond mining opposition, Singrauli fly ash and coal displacement water sit-ins.
-  - **Rajasthan**: Aravalli stone crusher blockades, Bansi Paharpur sanctuary protection protests.
-  - **Maharashtra**: Gadchiroli 70-Gram Sabha coalition opposing Surjagarh iron ore expansion, Chandrapur coal farmer strikes.
-  - **Karnataka**: Ballari & Sandur farmers' road blockades against iron ore trucks.
-  - **Northeast (Assam & Meghalaya)**: #SaveDehingPatkai movement, Jaintia Hills illegal rat-hole mining outcries.
-  - **Telangana / Andhra Pradesh**: Save Nallamala tribal movement halting uranium mining.
-- **Temporal Bound**: Strictly articles and reports published **from 2018 onwards** (`published >= 2018-01-01`).
+**Live axes:** conflict type · state · news outlet.
 
 ---
 
-## 📰 Monitored News Sources
+## The typology
 
-Ten outlets are polled every six hours. Each outlet carries a list of candidate feed URLs that are tried in order, so a retired section feed does not silently drop the outlet; the run log prints which URL each outlet was reached on.
+Six mutually exclusive types. The type is decided by what the conflict does to
+practice, not by the sector of the actor involved — which is why a plantation
+company and a state land bank land in the same type.
 
-| Outlet | Feeds polled |
-| --- | --- |
-| NDTV | India News, Latest, Top Stories |
-| India.com | News, Main |
-| BBC News | India (World/Asia), Science & Environment |
-| Times of India | Environment, India, Top Stories |
-| India Today | India, Environment/Science, Home |
-| Republic | All News, Stories, India News |
-| Hindustan Times | India News, Environment, Latest |
-| Mongabay India | Main feed |
-| The Hindu | Energy & Environment, National |
-| Down To Earth | Mining, Environment, Wildlife & Biodiversity |
+| # | Type | Practice element disrupted | Absorbs |
+|---|------|---------------------------|---------|
+| 1 | Extractive Resource Conflicts | Materials + Competences | Mining; extraction-driven energy and climate conflicts |
+| 2 | Land-Use and Agrarian Conflicts | Materials + Meanings | Land-use; biomass and land-use conflicts |
+| 3 | Infrastructure and Mobility Conflicts | Materials | — |
+| 4 | Conservation and Biodiversity Conflicts | Meanings | Biodiversity; tourism-related conflicts |
+| 5 | Industrial Pollution Conflicts | Materials | — |
+| 6 | Waste and Disposal Conflicts | Materials + Meanings | Waste management conflicts |
 
-Every article is stamped with a clean outlet label (`NDTV`, `Times of India`, …) rather than the raw feed title, so the in-app **Source** filter stays readable. Articles are admitted only if they match both a mining pattern *and* a protest pattern, and only if a location can be resolved and geocoded.
+**Water is a tag, not a seventh type.** Water conflicts in India are numerous
+and distinct enough to defend as their own type, but they do not share a
+practice disruption: a bottling plant drawing down an aquifer removes a
+resource, a canal reallocating irrigation water breaks an agrarian practice,
+and a reservoir submerging villages is built infrastructure. Water therefore
+runs as a cross-cutting tag — every water conflict keeps its practice type and
+is still countable as water, and the spread across types is a finding rather
+than something the categories hide. `national_policy` is the second tag,
+marking non-place-based protests against national environmental instruments.
+
+Everything above lives in **`conflict_types.py`**, which is the lexicon of
+record: the six keyword sets, the two gates, the tag definitions, the scoring
+weights and the backfill queries. Change the typology there and the pipeline,
+the JSON and the page all follow.
+
+## Inclusion rule
+
+An article becomes a record only if **both** are present:
+
+1. an environmental object of contention, and
+2. contestation by, or on behalf of, the affected population.
+
+Excluded regardless of type score: labour and privatisation disputes at the
+same sites; agricultural market policy, including the 2021 farm laws movement;
+wildlife-crime enforcement; and disaster reporting where nobody is contesting
+anything.
+
+## Monitored outlets
+
+NDTV · India.com · BBC News · Times of India · India Today · Republic ·
+Hindustan Times · Mongabay India · The Hindu · Down To Earth
+
+Two ingestion modes, because they do different jobs. The outlets' own RSS feeds
+carry only the last few days, so a plain run keeps the site current but can
+never reach backwards. `--backfill` queries Google News with a `site:` filter
+per outlet and reaches back years.
 
 ---
 
-## 🚀 Key Features
+## Running it
 
-1. **State-Segmented Leaflet Map**:
-   - Color-coded pins per Indian state with custom clustering (`leaflet.markercluster`).
-   - Official India boundary overlay (`india_boundary.geojson`).
-   - Popups showing **State**, **Mineral/Resource**, Headline, Location, Date, and direct link to source reports.
-2. **Dynamic State Filters**:
-   - Real-time state chips with incident counters (e.g., `Chhattisgarh (8)`, `Jharkhand (7)`, `Odisha (8)`).
-   - "All States" and "Clear" quick selection buttons.
-3. **Keyword Search**:
-   - Filter across headlines, Adivasi groups, mines, companies, districts, and minerals.
-4. **Timeline & Date Selector**:
-   - Bounded from 2018-01-01 to present.
-5. **Top Protest Epicenter Widget**:
-   - Dynamically calculates the district and state with the highest concentration of documented community protests.
-6. **Ask Deciphering Conflicts Assistant**:
-   - Client-side NLP assistant answering natural-language queries (e.g., *"Which state has the most mining protests?"*, *"Hasdeo Arand"*, *"Bauxite resistance in Odisha"*).
+```bash
+pip install -r requirements.txt
+
+python build_gazetteer.py        # once — downloads GeoNames IN.zip, writes gazetteer.json
+python build_map.py              # once — writes india.js from india_boundary.geojson
+
+python fetch_news.py --backfill  # build the archive across all six types (~25 min)
+python fetch_news.py             # keep it current; this is what CI runs
+```
+
+| Command | What it does |
+|---|---|
+| `python fetch_news.py` | Poll the ten outlets' own feeds |
+| `python fetch_news.py --backfill` | Google News search across all six types |
+| `python fetch_news.py --backfill --types waste,conservation` | Backfill selected types only |
+| `python fetch_news.py --backfill --window 8y` | Widen the recency window (default `5y`) |
+| `python fetch_news.py --reclassify` | Re-score stored records against the current lexicon |
+| `python fetch_news.py --stats` | Distribution by type, tag, state and outlet |
+| `python fetch_news.py --verify-links --dry-run` | Report dead links without changing anything |
+| `python fetch_news.py --verify-links` | Drop the dead ones |
+| `python fetch_news.py --purge` | Empty the dataset |
+| `python conflict_types.py` | Self-test the classifier on built-in examples |
+
+Serve the site with any static server — `python -m http.server` in this
+directory is enough. `data.js` inlines the records so `file://` works too.
+
+### After editing the lexicon
+
+```bash
+python conflict_types.py          # check the examples still classify as expected
+python fetch_news.py --reclassify # re-score the archive, then read the stats
+```
+
+`--reclassify` skips the contestation gate and drops the evidence bar to a
+single term, because stored records carry only a headline and already passed a
+harvest-time filter. Every record keeps its `margin` — the gap to the
+runner-up type — and a margin of 0 or 1 is the flag to read that record by
+hand. The page marks those `thin margin`.
 
 ---
 
-## 💻 Running & Previewing Locally
+## Files
 
-Start the local server:
-```powershell
-python -m http.server 8000
-```
-Open [http://localhost:8000](http://localhost:8000) in your browser.
+| File | Role |
+|---|---|
+| `conflict_types.py` | Typology, lexicon, gates, classifier, backfill queries |
+| `fetch_news.py` | Ingestion, gazetteer matching, link verification, outputs |
+| `build_gazetteer.py` | GeoNames India → `gazetteer.json` |
+| `build_map.py` | `india_boundary.geojson` → `india.js` (SVG path, Web Mercator) |
+| `index.html` · `style.css` · `app.js` | The page |
+| `india.js` | Generated map outline |
+| `news.json` | The record of the dataset |
+| `data/stories.json` · `data.js` · `taxonomy.json` | Mirrors the page reads |
+| `.github/workflows/update.yml` | Six-hourly feed poll, commits new records |
 
-To run the automated ingestion pipeline locally:
+`conflict_detector.py` and `map.js` are superseded stubs kept so old imports and
+bookmarks do not break; both can be deleted once nothing references them.
 
-```powershell
-python fetch_news.py                          # poll the ten outlets' own feeds (last few days)
-python fetch_news.py --backfill               # search Google News across the same ten outlets
-python fetch_news.py --backfill --window 8y   # widen the backfill window (default 5y)
-python fetch_news.py --verify-links           # check every stored URL, drop the dead ones
-python fetch_news.py --purge                  # empty the dataset
-```
+### The map
 
-### Two ingestion modes, and why
+Conflictscape draws its own outline rather than pulling raster tiles: no tile
+server, no third-party map library, no external stylesheet, the same picture
+offline as online, and a map that follows the light and dark themes like the
+rest of the page. `build_map.py` projects `india_boundary.geojson` to Web
+Mercator, simplifies it with Ramer–Douglas–Peucker and writes a single SVG
+path; `app.js` handles pan and zoom with one transform.
 
-The outlets' own RSS feeds carry only the last few days of articles. They keep the dashboard current but **cannot reach backwards** — a plain run will never recover 2018–2024, no matter how often it runs.
+---
 
-`--backfill` queries Google News RSS with a `site:` filter per outlet, which does reach back years. Ten outlets × twenty queries (ten generic topics, ten named conflicts such as Hasdeo, Niyamgiri, Deucha Pachami, Nallamala) = 200 searches, about five minutes with the built-in 1.5s throttle. Run it once to build the archive, then let the scheduled six-hourly runs keep it fresh.
+## What the numbers are not
 
-Backfilled articles arrive as `news.google.com/rss/articles/...` redirect URLs that resolve to the publisher — the same form the Regional Edition uses, and they work. The outlet label is taken from the `site:` filter, so `source` is reliable regardless of the wrapper.
+- **Not a census of conflict.** A census of *reporting* on conflict, by ten
+  English-language outlets. A state with an active bureau is over-represented
+  against one without.
+- **Not one row per conflict.** A long-running case generates many articles;
+  each is a record.
+- **Not adjudicated.** The classifier reads words, not merits.
+- **Not exhaustive on place.** Articles naming no resolvable place are dropped
+  rather than guessed at. Records whose only location is a state name are drawn
+  with a dashed mark at that state's gazetteer point, which is not the conflict
+  site.
 
-### ⚠️ Seed data and link verification
+## Sources and licences
 
-The dataset shipped with the prototype was **seeded demonstration data**: the headlines, places and dates are plausible but the article URLs do not resolve, so every popup link is a dead end. Before treating anything in `news.json` as evidence, verify it:
+Headlines, dates, outlet names and links only — article text remains the
+property of the publishing outlet. Place names and coordinates from
+[GeoNames](https://www.geonames.org/), CC BY 4.0; cite GeoNames if this
+gazetteer underpins published work.
 
-```powershell
-python fetch_news.py --verify-links --dry-run   # report only
-python fetch_news.py --verify-links             # drop the dead ones
-```
+The typology is original to this project and grounded in social practice theory
+(Shove, Pantzar & Watson, 2012).
 
-A story is dropped if its URL returns 4xx/5xx or silently redirects to the outlet's homepage. Network errors and rate limits are reported as `UNSURE` and kept, so a flaky connection never deletes good data. Run this periodically — link rot removes real articles too.
-
-`--verify-links` uses only the Python standard library, so it runs regardless of whether spaCy, geopy or feedparser are importable.
-
-### Location resolution
-
-Places are resolved by matching article text against `gazetteer.json`, built from the [GeoNames India dataset](https://download.geonames.org/export/dump/IN.zip) (CC BY 4.0):
-
-```powershell
-python build_gazetteer.py
-```
-
-This replaces the earlier spaCy NER approach. Three reasons it is better here:
-
-- **Deterministic.** The same article always yields the same coordinates. A general NER model's output shifts between model versions, which is awkward to defend methodologically.
-- **Better coverage.** `en_core_web_sm` is trained on general English news; it does not reliably recognise Keonjhar, Bailadila or Hasdeo. GeoNames carries Indian villages and natural features — mountains, forests, protected areas — so the named conflict sites resolve.
-- **No dependency stack.** spaCy does not support Python 3.13+, and on 3.14 it raises a pydantic `ConfigError` at import. Dropping it removes that constraint, and `geopy`/Nominatim with it — no per-request rate limit, no network calls during extraction.
-
-`build_gazetteer.py` also writes `gazetteer_source.json` recording the source URL, licence, build timestamp and row counts, so the geographic layer is citable.
-
-**Ambiguous names keep every candidate.** There is a Raniganj in West Bengal (the coal town) and another in Telangana. Both are stored; the article text decides — if it names a state, that candidate wins, otherwise the larger settlement is the prior. `gazetteer_source.json` reports how many names are ambiguous.
-
-**Requirements:** `feedparser` only. Any Python 3.9+, including your 3.14.
+Built for the doctoral project *Typology and Determinants of Environmental
+Conflicts in India through Social Practice Theory*, Institute of Spatial
+Management, Wrocław University of Environmental and Life Sciences, funded by
+NCN PRELUDIUM 25.
