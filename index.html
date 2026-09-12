@@ -136,12 +136,20 @@ p{margin:0}
 .indiamap .state.has{cursor:pointer}
 .indiamap .state.has:hover{stroke:var(--ink);stroke-width:1.6}
 .indiamap .state.sel{stroke:var(--marigold);stroke-width:3}
+.indiamap.zoomed .state.sel{fill:color-mix(in oklab, var(--tile-hi) 24%, var(--tile-0))}
 .indiamap .state:focus{outline:none}
 .indiamap .state:focus-visible{stroke:var(--focus);stroke-width:3}
 .indiamap .outline{fill:none;stroke:var(--ink-3);stroke-width:1;vector-effect:non-scaling-stroke}
-.indiamap .mk{fill:var(--marigold);stroke:var(--ink);stroke-width:1.4;vector-effect:non-scaling-stroke;cursor:pointer;transition:opacity .2s}
-.indiamap .mk.dim{opacity:.3}
+.indiamap .mk{fill:var(--marigold);stroke:var(--ink);stroke-width:1.4;vector-effect:non-scaling-stroke;cursor:pointer}
 .indiamap .mk.off{display:none}
+.indiamap .bub{cursor:pointer}
+.indiamap .bub circle{fill:var(--marigold);stroke:var(--ink);stroke-width:1.4;vector-effect:non-scaling-stroke}
+.indiamap .bub text{font-family:var(--mono);font-weight:500;fill:var(--on-marigold);text-anchor:middle;dominant-baseline:central;pointer-events:none}
+.indiamap .bub.off{display:none}
+.indiamap .bub:focus{outline:none}
+.indiamap .bub:focus-visible circle{stroke:var(--focus);stroke-width:3}
+.mapback{position:absolute;top:10px;left:10px;z-index:4;font:inherit;font-size:13.5px;font-weight:500;background:var(--ground);color:var(--ink);border:1px solid var(--ink-3);padding:7px 13px;border-radius:2px;cursor:pointer}
+.mapback:hover{background:var(--marigold);color:var(--on-marigold);border-color:var(--marigold)}
 .maptip{position:absolute;pointer-events:none;background:var(--ink);color:var(--ground);font-size:13.5px;line-height:1.35;padding:6px 10px;border-radius:2px;white-space:nowrap;transform:translate(-50%,calc(-100% - 12px));z-index:5}
 .maptip b{font-weight:700}
 .legend-dot{width:12px;height:12px;border-radius:50%;background:var(--marigold);border:1.5px solid var(--ink);display:inline-block;vertical-align:middle}
@@ -276,7 +284,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
       <div class="hero-body">
         <p class="eyebrow">Socio-environmental conflicts in India</p>
         <h1>Every protest defends <span class="placard">a way of life.</span></h1>
-        <p class="lead">ConflictScape follows environmental conflicts across India in which affected people take to the streets — 183 of them so far — what kind of conflict it is, where it happens, and which news outlets report it. Then it asks <em>why</em>, using social practice theory: everyday life is built from things, meanings and know-how, and people resist when those are torn apart.</p>
+        <p class="lead">ConflictScape follows environmental conflicts across India in which affected people take to the streets, 183 of them so far: what kind of conflict it is, where it happens, and which news outlets report it. Then it asks <em>why</em>, using social practice theory: everyday life is built from things, meanings and know-how, and people resist when those are torn apart.</p>
         <dl class="facts">
           <div><dt>183</dt><dd>conflicts recorded</dd></div>
           <div><dt>6</dt><dd>conflict types</dd></div>
@@ -296,13 +304,13 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
       <div class="sec-head">
         <p class="eyebrow">What counts as a case</p>
         <h2>A dispute becomes a case when the affected people protest</h2>
-        <p>The project tracks conflicts over land, water, forests, coasts and air where the people who bear the harm organise against it — through marches, blockades, sit-ins, hartals or petitions backed by public action.</p>
+        <p>The project tracks conflicts over land, water, forests, coasts and air where the people who bear the harm organise against it, through marches, blockades, sit-ins, hartals or petitions backed by public action.</p>
       </div>
       <div class="counts">
         <div class="rule in">
           <h3>Included</h3>
           <ul>
-            <li>Place-based environmental conflicts — a mine, a port, a landfill, a protected area</li>
+            <li>Place-based environmental conflicts: a mine, a port, a landfill, a protected area</li>
             <li>Protests against national environmental policy</li>
             <li>Conflicts where water is at stake, tagged across every type</li>
           </ul>
@@ -324,7 +332,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
       <div class="sec-head">
         <p class="eyebrow">Conflict types</p>
         <h2>Six kinds of conflict, sorted by what they break</h2>
-        <p>Each type is linked to the element of everyday practice it disrupts most. The small three-circle mark on each shows which — the same circles explained in the theory section below.</p>
+        <p>Each type is linked to the element of everyday practice it disrupts most. The small three-circle mark on each shows which, using the same circles explained in the theory section below.</p>
       </div>
       <div class="types" id="typeGrid"></div>
       <p class="note"><span class="tag">Water</span><span>is not a seventh type. It is a tag that can sit on any conflict, so water disputes stay countable across all six.</span></p>
@@ -336,7 +344,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
       <div class="sec-head">
         <p class="eyebrow">Locations</p>
         <h2>Where people are protesting</h2>
-        <p>Every dot is one of the 183 conflicts recorded so far, at the place it was reported from. Filter by conflict type, then click a state or a dot to read the reports. The deeper the colour, the more conflicts in that state.</p>
+        <p>Each bubble carries the number of conflicts recorded in that state. Click a state to zoom in, and the bubble opens into one dot per conflict, each at the place it was reported from. Filter by conflict type at any time.</p>
       </div>
       <div class="filters" id="typeFilters" role="group" aria-label="Filter by conflict type"></div>
       <div class="mapgrid">
@@ -344,13 +352,14 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
           <div class="mapwrap" id="mapwrap">
             <svg class="indiamap" id="indiaMap" role="group" aria-label="Map of India showing conflict cases by state"></svg>
             <div class="maptip" id="maptip" hidden></div>
+            <button type="button" class="mapback" id="mapback" hidden>Back to all India</button>
           </div>
           <div class="maplegend">
             <span class="ramp" aria-hidden="true"><i style="--p:0%"></i><i style="--p:35%"></i><i style="--p:58%"></i><i style="--p:78%"></i><i style="--p:95%"></i></span>
             <span>none → most conflicts</span>
-            <span><i class="legend-dot" aria-hidden="true"></i> one reported conflict</span>
+            <span><i class="legend-dot" aria-hidden="true"></i> number of conflicts in a state</span>
           </div>
-          <p class="preview-flag" style="margin-top:6px">Reports collected January 2023 – September 2026. State borders are approximate, derived from GeoNames place data (CC BY 4.0) within India’s official outline.</p>
+          <p class="preview-flag" style="margin-top:6px">Reports collected January 2023 to September 2026. State borders are approximate, derived from GeoNames place data (CC BY 4.0) within India’s official outline.</p>
         </div>
         <div>
           <div class="cases-head">
@@ -358,7 +367,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
             <span class="mono" id="casesCount" style="font-size:13px;color:var(--ink-3)"></span>
           </div>
           <ul class="cases" id="caseList"></ul>
-          <p class="preview-flag">Each entry links to the news report it came from. Places are as reported: statewide reports sit at the centre of the state.</p>
+          <p class="preview-flag">Each entry links to the news report it came from. Places are as reported, so statewide reports sit at the centre of the state.</p>
         </div>
       </div>
     </div>
@@ -369,7 +378,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
       <div class="sec-head">
         <p class="eyebrow">News media sources</p>
         <h2>Where the reports come from</h2>
-        <p>Every conflict here begins as a news report. 57 outlets — national dailies, regional papers, digital newsrooms, environmental desks and independent conflict trackers — carried the 183 reports recorded so far.</p>
+        <p>Every conflict here begins as a news report. 57 outlets carried the 183 reports recorded so far: national dailies, regional papers, digital newsrooms, environmental desks and independent conflict trackers.</p>
         </div>
         <div class="outletgrid">
           <div><b>The Times of India</b><span>33</span></div>
@@ -398,7 +407,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
       </div>
       <div class="theory-intro">
         <div>
-          <p>A <strong>practice</strong> is something people do again and again — making tea, fishing, farming, gathering from the forest. Social practice theory says a practice is not just a habit inside someone's head. It is held together by three elements that have to be linked, every time it is done.</p>
+          <p>A <strong>practice</strong> is something people do again and again: farming beside a forest, fishing, gathering firewood. Social practice theory says a practice is not just a habit inside someone's head. It is held together by three elements that have to be linked, every time it is done.</p>
           <p>When a mine, a highway, a factory or a new rule pulls one of those elements away, the practice can no longer be carried out. Protest is how people defend it.</p>
         </div>
         <div>
@@ -417,7 +426,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
         <div>
           <div class="tabs" id="scenarioTabs" role="group" aria-label="Choose an example"></div>
           <div class="detail" aria-live="polite">
-            <p class="eyebrow" id="detailKicker">Example · Making chai</p>
+            <p class="eyebrow" id="detailKicker">Example · Living beside a forest</p>
             <h3 id="detailTitle">The practice</h3>
             <p class="body" id="detailBody"></p>
             <p class="hint">Click a circle or an overlap to read that part.</p>
@@ -474,7 +483,7 @@ const TYPES = [
   {id:'extractive', name:'Extractive Resource', els:['materials'],
    desc:'Mining and quarrying that dig coal, minerals or stone out of the ground people farm, graze and worship on.'},
   {id:'land', name:'Land-Use & Agrarian', els:['materials','meanings'],
-   desc:'Farmland and common land acquired or converted for other uses — taking both the livelihood and the ancestral tie to the land.'},
+   desc:'Farmland and common land acquired or converted for other uses, taking both the livelihood and the ancestral tie to the land.'},
   {id:'infra', name:'Infrastructure & Displacement', els:['materials'],
    desc:'Highways, ports, railways, dams and urban projects that displace homes, farms and forests.'},
   {id:'conservation', name:'Conservation & Biodiversity', els:['meanings'],
@@ -541,39 +550,98 @@ const RAD = d=>d*Math.PI/180, mercY = lat=>Math.log(Math.tan(Math.PI/4+RAD(lat)/
 const MB = MAPDATA.bounds, MS = MAPDATA.width/(RAD(MB.east)-RAD(MB.west));
 const project = (lat,lon)=>[(RAD(lon)-RAD(MB.west))*MS, (mercY(MB.north)-mercY(lat))*MS];
 
+const R0 = MAPDATA.height / MAPDATA.width;
+const bubbleLayer = mk('g',{}), dotLayer = mk('g',{});
+svgMap.appendChild(bubbleLayer); svgMap.appendChild(dotLayer);
+svgMap.style.aspectRatio = `${MAPDATA.width} / ${MAPDATA.height}`;
+const bboxOf = {}; Object.entries(statePath).forEach(([n,p])=>{ bboxOf[n] = p.getBBox(); });
+
 const marks = CASES.map(c=>{const [x,y]=project(c.lat,c.lon); return {c,x,y};});
-const groups = {};                       // reports sharing one place fan out in rings
-marks.forEach(m=>{(groups[m.c.lat+','+m.c.lon] ||= []).push(m);});
-Object.values(groups).forEach(g=>{
+const places = {};                       // reports sharing one place fan out inside the state
+marks.forEach(m=>{ (places[m.c.st+'|'+m.c.lat+','+m.c.lon] ||= []).push(m); });
+Object.values(places).forEach(g=>{
   if (g.length < 2) return;
-  const cx=g[0].x, cy=g[0].y; let k=0, ring=1;
+  const bb = bboxOf[g[0].c.st] || {width:100, height:100};
+  const unit = Math.max(bb.width, bb.height)/26;
+  const cx = g[0].x, cy = g[0].y;
+  let k = 0, ring = 0;
   while (k < g.length){
-    const n = k===0 ? 1 : 6*ring, r = 12*ring;
+    const n = ring===0 ? 1 : 6*ring, r = unit*ring;
     for (let i=0; i<n && k<g.length; i++, k++){
-      if (ring===1 && k===0){ g[k].x=cx; g[k].y=cy; continue; }
-      const a = (i/n)*2*Math.PI + ring*0.4;
-      g[k].x = cx + Math.cos(a)*r; g[k].y = cy + Math.sin(a)*r;
+      const a = (i/n)*2*Math.PI + ring*0.5;
+      g[k].x = cx + (ring ? Math.cos(a)*r : 0);
+      g[k].y = cy + (ring ? Math.sin(a)*r : 0);
     }
     ring++;
   }
 });
-for (let it=0; it<20; it++){             // ease apart any remaining overlaps
-  for (let i=0;i<marks.length;i++) for (let j=i+1;j<marks.length;j++){
-    const a=marks[i], b=marks[j]; let dx=b.x-a.x, dy=b.y-a.y; let d=Math.hypot(dx,dy);
-    const min=10; if (d>=min) continue; if (d===0){dx=0;dy=1;d=1;}
-    const push=(min-d)/2; a.x-=dx/d*push; a.y-=dy/d*push; b.x+=dx/d*push; b.y+=dy/d*push;
-  }
-}
 marks.forEach(m=>{
-  m.el = mk('circle',{cx:m.x.toFixed(1), cy:m.y.toFixed(1), r:5.5, class:'mk'});
-  markerLayer.appendChild(m.el);
+  m.el = mk('circle',{cx:m.x.toFixed(1), cy:m.y.toFixed(1), r:1, class:'mk off'});
+  dotLayer.appendChild(m.el);
   m.el.addEventListener('pointerenter',e=>showTip(e,`<b>${m.c.name}</b><br>${m.c.loc} · ${m.c.yr}`));
   m.el.addEventListener('pointermove',moveTip);
   m.el.addEventListener('pointerleave',hideTip);
-  m.el.addEventListener('click',()=>{fState = m.c.st; renderMap();});
 });
 
-let counts = {};
+const bubbles = {};
+Object.keys(statePath).forEach(name=>{
+  const g = mk('g',{class:'bub off', tabindex:'0', role:'button'});
+  const c = mk('circle',{r:1}), t = mk('text',{});
+  g.append(c, t); bubbleLayer.appendChild(g);
+  bubbles[name] = {g, c, t};
+  g.addEventListener('pointerenter',e=>{const n=counts[name]||0;showTip(e,`<b>${name}</b> · ${n} conflict${n===1?'':'s'}<br>click to zoom in`);});
+  g.addEventListener('pointermove',moveTip);
+  g.addEventListener('pointerleave',hideTip);
+  g.addEventListener('click',()=>zoomTo(name));
+  g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();zoomTo(name);}});
+});
+
+let counts = {}, zoomState = null, raf = null;
+let view = {x:0, y:0, w:MAPDATA.width, h:MAPDATA.height};
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function setView(v){
+  view = v;
+  svgMap.setAttribute('viewBox', `${v.x.toFixed(1)} ${v.y.toFixed(1)} ${v.w.toFixed(1)} ${v.h.toFixed(1)}`);
+  scaleMarks();
+}
+function animateTo(v){
+  if (raf) cancelAnimationFrame(raf);
+  if (reduceMotion){ setView(v); return; }
+  const from = {...view}, t0 = performance.now(), dur = 480;
+  const step = now => {
+    const p = Math.min(1, (now-t0)/dur), e = p<.5 ? 4*p*p*p : 1-Math.pow(-2*p+2,3)/2;
+    setView({x:from.x+(v.x-from.x)*e, y:from.y+(v.y-from.y)*e, w:from.w+(v.w-from.w)*e, h:from.h+(v.h-from.h)*e});
+    if (p < 1) raf = requestAnimationFrame(step);
+  };
+  raf = requestAnimationFrame(step);
+}
+function scaleMarks(){
+  const s = view.w / MAPDATA.width;
+  marks.forEach(m=>m.el.setAttribute('r', (10*s).toFixed(2)));
+  Object.entries(bubbles).forEach(([name,b])=>{
+    const n = counts[name]||0;
+    b.c.setAttribute('r', ((10 + 2.7*Math.sqrt(n)) * s).toFixed(2));
+    b.t.setAttribute('font-size', ((n>99?12:14) * s).toFixed(2));
+  });
+}
+function zoomTo(name){
+  if (!counts[name]) return;
+  const bb = bboxOf[name];
+  let w = bb.width*1.18, h = bb.height*1.18;
+  if (h/w < R0) h = w*R0; else w = h/R0;
+  zoomState = name; fState = name;
+  animateTo({x: bb.x+bb.width/2-w/2, y: bb.y+bb.height/2-h/2, w, h});
+  renderMap();
+}
+function zoomOut(){
+  zoomState = null; fState = null;
+  animateTo({x:0, y:0, w:MAPDATA.width, h:MAPDATA.height});
+  renderMap();
+}
+$('#mapback').addEventListener('click', zoomOut);
+document.addEventListener('keydown', e=>{ if (e.key === 'Escape' && zoomState) zoomOut(); });
+
 function showTip(e,html){tip.innerHTML=html;tip.hidden=false;moveTip(e);}
 function moveTip(e){const r=wrapM.getBoundingClientRect();tip.style.left=(e.clientX-r.left)+'px';tip.style.top=(e.clientY-r.top)+'px';}
 function hideTip(){tip.hidden=true;}
@@ -582,7 +650,7 @@ Object.values(statePath).forEach(pth=>{
   pth.addEventListener('pointerenter',e=>{const n=counts[name]||0;showTip(e,`<b>${name}</b> · ${n} conflict${n===1?'':'s'}`);});
   pth.addEventListener('pointermove',moveTip);
   pth.addEventListener('pointerleave',hideTip);
-  const pick=()=>{ if(!counts[name]) return; fState = fState===name?null:name; renderMap(); };
+  const pick=()=>{ if(!counts[name]) return; if (zoomState===name) zoomOut(); else zoomTo(name); };
   pth.addEventListener('click',pick);
   pth.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();pick();}});
 });
@@ -591,26 +659,40 @@ function renderMap(){
   document.querySelectorAll('#typeFilters .fbtn').forEach(b=>b.setAttribute('aria-pressed', String(b.id==='f-'+fType)));
   const byType = CASES.filter(c=>fType==='all'||c.type===fType);
   counts = {}; byType.forEach(c=>counts[c.st]=(counts[c.st]||0)+1);
+  if (zoomState && !counts[zoomState]) { zoomOut(); return; }
   if (fState && !counts[fState]) fState = null;
   Object.entries(statePath).forEach(([name,pth])=>{
     const n = counts[name]||0;
     pth.style.setProperty('--p', (n===0?0 : 22+73*Math.sqrt(n/CASE_MAX)).toFixed(1)+'%');
     pth.classList.toggle('has', n>0);
     pth.classList.toggle('sel', fState===name);
-    if (n>0){ pth.setAttribute('tabindex','0'); pth.setAttribute('role','button'); pth.setAttribute('aria-label',`${name}: ${n} conflict${n===1?'':'s'}`); }
+    if (n>0){ pth.setAttribute('tabindex','0'); pth.setAttribute('role','button'); pth.setAttribute('aria-label',`${name}: ${n} conflict${n===1?'':'s'}, zoom in`); }
     else { pth.removeAttribute('tabindex'); pth.removeAttribute('role'); pth.removeAttribute('aria-label'); }
   });
   if (fState && statePath[fState]) stateLayer.appendChild(statePath[fState]);
-  marks.forEach(m=>{
-    const inType = fType==='all'||m.c.type===fType;
-    m.el.classList.toggle('off', !inType);
-    m.el.classList.toggle('dim', inType && !!fState && m.c.st!==fState);
+  Object.entries(bubbles).forEach(([name,b])=>{
+    const n = counts[name]||0, show = n>0 && !zoomState;
+    b.g.classList.toggle('off', !show);
+    if (!show) return;
+    const g = marks.filter(m=>m.c.st===name && (fType==='all'||m.c.type===fType));
+    const cx = g.reduce((a,m)=>a+m.x,0)/g.length, cy = g.reduce((a,m)=>a+m.y,0)/g.length;
+    b.c.setAttribute('cx',cx.toFixed(1)); b.c.setAttribute('cy',cy.toFixed(1));
+    b.t.setAttribute('x',cx.toFixed(1)); b.t.setAttribute('y',cy.toFixed(1));
+    b.t.textContent = n;
+    b.g.setAttribute('aria-label',`${name}: ${n} conflict${n===1?'':'s'}, zoom in`);
   });
+  marks.forEach(m=>{
+    const on = zoomState && m.c.st===zoomState && (fType==='all'||m.c.type===fType);
+    m.el.classList.toggle('off', !on);
+  });
+  scaleMarks();
+  svgMap.classList.toggle('zoomed', !!zoomState);
+  $('#mapback').hidden = !zoomState;
   const list = fState ? byType.filter(c=>c.st===fState) : byType;
   $('#casesTitle').textContent = fState || 'All states';
   const cnt = $('#casesCount');
   cnt.innerHTML = `${list.length} conflict${list.length===1?'':'s'}` + (fState ? ` · <button type="button" class="clear" id="clearState">show all</button>` : '');
-  if (fState) $('#clearState').addEventListener('click',()=>{fState=null;renderMap();});
+  if (fState) $('#clearState').addEventListener('click', zoomOut);
   const ul = $('#caseList'); ul.innerHTML='';
   list.forEach(c=>{
     const t = TYPE[c.type];
@@ -625,9 +707,9 @@ renderMap();
 
 /* ---------- venn ---------- */
 const REGIONS = [
-  {id:'materials', x:122, y:160, big:'MATERIALS', small:'the things', lit:['materials'], title:'Materials — the things'},
-  {id:'meanings', x:438, y:160, big:'MEANINGS', small:'why it matters', lit:['meanings'], title:'Meanings — why it matters'},
-  {id:'competences', x:280, y:448, big:'COMPETENCES', small:'the know-how', lit:['competences'], title:'Competences — the know-how'},
+  {id:'materials', x:122, y:160, big:'MATERIALS', small:'the things', lit:['materials'], title:'Materials: the things'},
+  {id:'meanings', x:438, y:160, big:'MEANINGS', small:'why it matters', lit:['meanings'], title:'Meanings: why it matters'},
+  {id:'competences', x:280, y:448, big:'COMPETENCES', small:'the know-how', lit:['competences'], title:'Competences: the know-how'},
   {id:'matMean', x:280, y:118, small:'meaningful', small2:'things', lit:['materials','meanings'], title:'Where things carry meaning'},
   {id:'matComp', x:180, y:300, small:'skilled', small2:'handling', lit:['materials','competences'], title:'Where skill meets the tools'},
   {id:'meanComp', x:380, y:300, small:'shared', small2:'tradition', lit:['meanings','competences'], title:'Where know-how carries meaning'},
@@ -635,49 +717,49 @@ const REGIONS = [
 ];
 
 const SCEN = {
-  chai:{label:'Making chai', r:{
-    materials:'Tea leaves, milk, sugar, ginger, a pan and a flame.',
-    meanings:'A morning ritual and a gesture of welcome — you offer chai to every guest.',
-    competences:'Knowing how long to boil, how much ginger, and when it is “ready”.',
-    matMean:'The same steel tumbler or cup that makes it feel like home.',
-    matComp:'Handling the pan so it rises without boiling over.',
-    meanComp:'Making it the way your family has always made it.',
-    center:'Making chai. It only happens when the things, the meaning and the know-how come together — every single time.'},
-    breaks:['competences'], kind:'Everyday example',
-    breakText:'Hand the same leaves and stove to someone who has never made chai. The things are there, the meaning is there — but without the know-how, the practice does not happen. Take away any one element and a practice falters.'},
+  wildlife:{label:'Living beside a forest', r:{
+    materials:'A smallholding at the forest edge, banana and paddy, a solar fence, a night lamp, and the paths a herd has always used.',
+    meanings:'Elephants as neighbours and as gods, respected and feared at once; the field as the family\u2019s security.',
+    competences:'Reading the signs of a herd nearby, keeping watch at night, turning animals back without harming them.',
+    matMean:'The same field feeds the family and stands in the animals\u2019 way.',
+    matComp:'Knowing where a fence will hold and where the herd always crosses.',
+    meanComp:'Driving a herd off without hurting it, because the animal is protected and respected.',
+    center:'Farming and living at the forest edge, which holds only while people can work the land with wild animals close by.'},
+    breaks:['materials','competences'], kind:'Resembles: Conservation & Biodiversity',
+    breakText:'Forest cover shrinks and herds come more often. A crop goes in one night, fences fail, and night watching no longer keeps anyone safe. People are injured or killed, yet the animal is protected and cannot be touched. The practice breaks, and villages protest for protection and compensation.'},
   fishing:{label:'Fishing on the coast', r:{
     materials:'Country boats, nets, the open beach where boats land, and fish close to shore.',
     meanings:'The sea as a shared commons; fishing as a family trade and a coastal identity.',
     competences:'Reading wind, tides and currents; mending nets; knowing where fish gather each season.',
-    matMean:'The beach is not only a landing site — it is where the village sells, meets and celebrates.',
+    matMean:'The beach is not only a landing site. It is where the village sells, meets and celebrates.',
     matComp:'Steering a boat through the surf onto a beach you know by heart.',
     meanComp:'Knowledge of the sea handed down from elders is a mark of belonging.',
-    center:'Artisanal fishing — a daily practice that lasts only while boats, beach, skill and meaning stay linked.'},
-    breaks:['materials'], kind:'Resembles: Infrastructure & Mobility',
-    breakText:'A new port and seawall change the currents and the beach erodes. Boats cannot land where they always did, and generations of knowledge stop fitting the new coast. With its materials gone, the practice breaks — and fishers protest.'},
+    center:'Artisanal fishing, a daily practice that lasts only while boats, beach, skill and meaning stay linked.'},
+    breaks:['materials'], kind:'Resembles: Infrastructure & Displacement',
+    breakText:'A new port and seawall change the currents and the beach erodes. Boats cannot land where they always did, and generations of knowledge stop fitting the new coast. With its materials gone, the practice breaks, and fishers protest.'},
   farming:{label:'Farming family land', r:{
     materials:'A plot of land, water from a well or canal, seeds, cattle.',
     meanings:'Land as inheritance and security; the dignity of being a farmer.',
     competences:'Knowing this soil, reading the monsoon, deciding when to sow.',
-    matMean:'Ancestral land — ground that holds a family’s history.',
+    matMean:'Ancestral land, ground that holds a family\u2019s history.',
     matComp:'Working this particular soil with the tools and animals at hand.',
     meanComp:'Farming know-how passed down as a family tradition.',
-    center:'Smallholder farming — a way of making a living that is also a way of belonging.'},
+    center:'Smallholder farming, a way of making a living that is also a way of belonging.'},
     breaks:['materials','meanings'], kind:'Resembles: Land-Use & Agrarian',
-    breakText:'The land is acquired for an expressway. Compensation turns the plot into cash, but cash cannot hold the soil-knowledge or the ancestral tie. Both the things and their meaning are lost at once — and farmers protest.'},
+    breakText:'The land is acquired for an expressway. Compensation turns the plot into cash, but cash cannot hold the soil-knowledge or the ancestral tie. Both the things and their meaning are lost at once, and farmers protest.'},
   forest:{label:'Gathering from the forest', r:{
     materials:'Forest paths, grazing grass, firewood, honey, leaves and fruit.',
     meanings:'The forest as home, a sacred grove, a customary right.',
     competences:'Knowing which plants heal or feed; herding cattle through the forest.',
     matMean:'A grove or hill that is both a resource and a place of worship.',
     matComp:'Harvesting honey or leaves without killing the plant.',
-    meanComp:'Taking only what the forest can give back — a rule learned, not written.',
-    center:'Forest gathering and grazing — a practice as old as the villages beside the forest.'},
+    meanComp:'Taking only what the forest can give back, a rule learned rather than written.',
+    center:'Forest gathering and grazing, a practice as old as the villages beside the forest.'},
     breaks:['meanings'], kind:'Resembles: Conservation & Biodiversity',
-    breakText:'The forest is declared a protected area. Nothing physical changes overnight — the trees and paths are still there — but gathering is now “trespass”. The meaning is rewritten from outside, and residents protest.'}
+    breakText:'The forest is declared a protected area. Nothing physical changes overnight, the trees and paths are still there, but gathering is now \u201ctrespass\u201d. The meaning is rewritten from outside, and residents protest.'}
 };
 
-let scen = 'chai', region = 'center', broken = false;
+let scen = 'wildlife', region = 'center', broken = false;
 const NS = 'http://www.w3.org/2000/svg';
 const rg = $('#regions');
 REGIONS.forEach(R=>{
